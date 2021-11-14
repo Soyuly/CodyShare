@@ -1,4 +1,4 @@
-{% load static %}
+{% extends 'nav.html' %} {% load static %} {% block content %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,14 +13,6 @@
     ></script>
   </head>
   <body>
-    <header>
-      <div class="logo">CS</div>
-      <div class="account">
-        <span><a href="#">LOGIN&nbsp;</a></span>
-        <span><a href="#">SIGNUP</a></span>
-      </div>
-    </header>
-
     <section>
       <div class="introduce">
         딱 한번 입을 옷<br />
@@ -86,3 +78,4 @@
     </footer>
   </body>
 </html>
+{% endblock %}
