@@ -94,16 +94,18 @@ section .introduce::after {
 }
 
 section form {
-  margin-left: 16rem;
-  margin-right: 16rem;
+  width: 62vw;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
+  justify-content: center;
   align-content: flex-end;
   margin-top: 100px;
   margin-bottom: 100px;
 }
 
 section .gender {
-  width: 107px;
+  width: 5vw;
   height: 40px;
   border: none;
   border-radius: 10px;
@@ -121,7 +123,7 @@ section select:hover {
 }
 
 section .cody_filter {
-  width: 160px;
+  width: 8vw;
   height: 40px;
   margin-right: 40px;
   border: none;
@@ -140,7 +142,7 @@ section .search {
 }
 
 section .search input {
-  width: 37vw;
+  width: 49vw;
   height: 40px;
   border: none;
   padding-left: 2px;
@@ -156,8 +158,8 @@ section .search button {
 }
 
 section article {
-  margin-left: 16rem;
-  margin-right: 16rem;
+  margin-left: auto;
+  margin-right: auto;
   width: 62vw;
   display: flex;
   justify-content: space-between;
