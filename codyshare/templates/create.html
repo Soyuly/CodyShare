@@ -1,0 +1,87 @@
+{% extends 'nav.html' %} {% load static %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>메인</title>
+    <link rel="stylesheet" href="{% static 'css/create.css' %}" />
+
+    <script
+      src="https://kit.fontawesome.com/e4d6910b4e.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <form method="post" enctype="multipart/form-data">
+        <section>
+            <p class="header">새 글 쓰기</p>
+            <div class="content">
+                <input class="title" type="text" placeholder="제목">
+                <textarea class="detail" name="" id="" placeholder="본문을 적어주세요"></textarea>
+                <p style="display: inline-block;">사진첨부</p>
+            
+                <div class="button" class="img_up">
+                    <label for="chooseFile">
+                        <img src="../../static/img/img.png" alt="이미지 업로드">
+                    </label>
+                </div>
+                <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
+                <br>
+                <p style="display: inline;">카테고리</p>
+                <select name="" id="" style="margin-left: 3rem;">
+                    <option value="">남녀공용</option>
+                    <option value="">남자</option>
+                    <option value="">여자</option>
+    
+                </select>
+                <select name="" id="" style="margin-left: 2rem;">
+                    <option value="">종류</option>
+                    <option value="">아우터</option>
+                    <option value="">상의</option>
+                    <option value="">하의</option>
+                    <option value="">기타</option>
+                </select>
+                <br>
+                <br>
+                <p style="display: inline;">사이즈</p>
+                <select name="" id="" style="margin-left: 4rem;">
+                    <option value="">종류</option>
+                    <option value="">아우터</option>
+                    <option value="">상의</option>
+                    <option value="">하의</option>
+                    <option value="">기타</option>
+    
+                </select>
+                <input class="size"type="text">
+                <a href=""><img src="../../static/img/plus.png" alt="사이즈칸 늘리는 버튼" style="width:1rem"></a>
+                <br>
+                <br>
+                <p style="display: inline;">대여비</p>
+                <input class="cost"type="text" placeholder="대여비를 적어주세요"><p style="display: inline; margin-left: -0.8rem;">₩</p><p style="font-size: 0.8rem;font-weight: 700; display: inline; margin-left: 1rem;">*1일 기준</p>
+                <br>
+                <br>
+                <p style="display: inline;">대여기간</p>
+                <div class="cal">
+                    <input  type="date" name="dateofbirth" id="dateofbirth">
+                </div>
+                <p style="display: inline;">~</p>
+                <div class="cal">
+                    <input  type="date" name="dateofbirth" id="dateofbirth">
+                </div>
+                <button type="submit" class="sub">
+                    글 올리기
+                </button>
+            </div>
+        </section>
+    </form>
+    
+
+    <footer>
+      <div class="footer_info">CONTACT 1234@gmail.com</div>
+      <div class="footer_info">DEVELOPER 김가은 · 이도연 · 양소열</div>
+    </footer>
+  </body>
+</html>
+{% endblock %}
