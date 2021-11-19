@@ -1,0 +1,99 @@
+{% extends 'nav.html' %} {% load static %} {% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/mypage.css' %}" />
+    
+    <title>마이페이지</title>
+    <script
+      src="https://kit.fontawesome.com/e4d6910b4e.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <section>
+      <div class="introduce">마이페이지</div>
+      <article class="profile_card">
+        <div class="profile_image">asdf</div>
+        <div class="profile_box">
+          <div class="profile_id">thduf0623</div>
+
+          <div class="profile_detail">
+            <div class="name">
+              <span class="title_small">이름</span>
+              <span class="name_addr">김가은</span>
+            </div>
+
+            <div class="lend">
+              <span class="title_lend">대여 수</span>
+              <span class="lend_sell">2벌</span>
+            </div>
+
+            <div class="name">
+              <span class="title_small">주소</span>
+              <span class="name_addr">진주시 가좌동</span>
+            </div>
+
+            <div class="lend">
+              <span class="title_lend">판매 수</span>
+              <span class="lend_sell">10벌</span>
+            </div>
+          </div>
+          <div class="profile_btn_group">
+            <button class="profile_btn">찜 목록</button>
+            <button class="profile_btn">대여 기록</button>
+            <button class="profile_btn">판매관리</button>
+          </div>
+          <div class="profile_edit">
+            내 정보 수정 &nbsp; <i class="fas fa-arrow-right"></i>
+          </div>
+        </div>
+      </article>
+
+      <div class="profile_btn_group">
+        <button class="profile_btn">찜 목록</button>
+        <button class="profile_btn">대여 기록</button>
+        <button class="profile_btn">판매관리</button>
+      </div>
+
+      <h1>찜목록</h1>
+
+      <div class="background_bottom">
+        <article class="item_info">
+          <div class="item_container">
+            <img
+              src="https://image.msscdn.net/images/goods_img/20200306/1339280/1339280_1_500.jpg"
+            />
+
+            <div class="info">
+              <div class="name">SOYUL</div>
+              <div class="title">가디건 대여</div>
+              <div class="day">20.07.11</div>
+              <div class="contents">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Officiis voluptate necessitatibus nobis dolorum voluptatibus
+                voluptatem esse sed tempora, exercitationem culpa earum nulla
+                numquam doloribus animi iure quo similique suscipit ratione?
+              </div>
+            </div>
+          </div>
+
+          <div class="item_container"></div>
+          <div class="item_container"></div>
+          <div class="item_container"></div>
+          <div class="item_container"></div>
+          <div class="item_container"></div>
+        </article>
+
+        <div class="more">
+          MORE
+          <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+  </body>
+</html>
+{% endblock %}
