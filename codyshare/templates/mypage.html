@@ -14,12 +14,6 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-
-    <!-- font awesome -->
-    <script
-      src="https://kit.fontawesome.com/e4d6910b4e.js"
-      crossorigin="anonymous"
-    ></script>
     <title>마이페이지</title>
 {% endblock %}
 
@@ -59,7 +53,7 @@
                 <div class="lend">
                   <!-- 판매 수-->
                   <span class="title_lend">판매 수</span>
-                  <span class="lend_sell">10벌</span>
+                  <span class="lend_sell">{{ sell_posts|length }}벌</span>
                 </div>
               </div>
             </div>
@@ -114,6 +108,7 @@
         </div>
       </div>
 
+      
       <!--찜 목록-->
       <div class="background_bottom">
         <div class="like_title" id="likecontents">찜목록</div>
@@ -140,11 +135,6 @@
           {% endfor %}
   
         </article>
-
-        <div class="more">
-          MORE
-          <i class="fas fa-chevron-down"></i>
-        </div>
       </div>
 
       <!--대여 목록-->
@@ -152,23 +142,19 @@
         <div class="like_title" id="lendcontents">대여 목록</div>
 
         <article class="item_info">
-          <div class="item_container">
+          {% for post in posts %}
+          <div class="item_container" onclick="location.href='{% url 'detail' post.id %}'">
             <img
-              src="https://image.msscdn.net/images/goods_img/20200306/1339280/1339280_1_500.jpg"
+            src="{{post.img.url}}"
             />
-
-            {% for post in posts %}
             <div class="info">
               <div class="info_title">
-                <span class="title">}</span>
-                <span class="name">{{ post.title }}</span>
+                <span class="title">{{ post.title }}</span>
+                <span class="name">{{ post.user_id.nickname }}</span>
               </div>
-              <div class="day">20.07.11</div>
+              <div class="day">{{ post.pub_date }}</div>
               <div class="contents_sell">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Officiis voluptate necessitatibus nobis dolorum voluptatibus
-                voluptatem esse sed tempora, exercitationem culpa earum nulla
-                numquam doloribus animi iure quo similique suscipit ratione?
+                {{ post.sum_content }}
               </div>
 
               <div class="lend_btns">
@@ -178,54 +164,42 @@
             </div>
           </div>
           {% endfor %}
-
-          <div class="item_container"></div>
-          <div class="item_container"></div>
-          <div class="item_container"></div>
-          <div class="item_container"></div>
           <div class="item_container"></div>
         </article>
-
-        <div class="more">
-          MORE
-          <i class="fas fa-chevron-down"></i>
-        </div>
       </div>
+
 
       <!--판매 관리-->
       <div class="background_bottom" id="sellcontents">
         <div class="like_title">판매 관리</div>
 
         <article class="item_info">
+          
+          {% for post in sell_posts %}
           <div class="item_container">
             <img
-              src="https://image.msscdn.net/images/goods_img/20200306/1339280/1339280_1_500.jpg"
+            src="{{post.img.url}}"
             />
-
             <div class="info">
               <div class="info_title">
-                <span class="title">가디건 대여</span>
-                <span class="name">SOYUL</span>
+                <span class="title"  onclick="location.href='{% url 'detail' post.id %}'">{{ post.title }}</span>
+                <span class="name">{{ post.user_id.nickname }}</span>
               </div>
-              <div class="day">20.07.11</div>
+              <div class="day">{{ post.pub_date }}</div>
               <div class="contents_sell">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Officiis voluptate necessitatibus nobis dolorum voluptatibus
-                voluptatem esse sed tempora, exercitationem culpa earum nulla
-                numquam doloribus animi iure quo similique suscipit ratione?
+                {{ post.sum_content }}
               </div>
-              <div class="sell_btns">
-                <button class="fas fa-pencil-alt"></button>
 
-                <button
-                  class="fas fa-trash"
-                  data-bs-toggle="modal"
-                  data-bs-target="#staticBackdrop"
-                ></button>
-                <button class="lend_btn">반납하기</button>
+              <div class="lend_btns">
+                <button class="lend_btn-text lend_btn">대여 기록</button>
+                <button class="lend_btn-icon lend_btn"><i class="fas fa-edit"></i></button>
+
+                <button class="lend_btn-icon lend_btn" onclick="openPopup('rentalInfo');"><i class="fas fa-trash-alt"></i></button>
+                <button class="lend_btn" >대여 정보</button>
               </div>
             </div>
           </div>
+          {% endfor %}
 
           <!--modal-->
           <div
@@ -268,25 +242,16 @@
             </div>
           </div>
 
-          <!--여기까지 부트스트랩 모달-->
-          <div class="item_container"></div>
-          <div class="item_container"></div>
-          <div class="item_container"></div>
-          <div class="item_container"></div>
-          <div class="item_container"></div>
-        </article>
+          <div class="popup">
+          </div>
 
-        <div class="more">
-          MORE
-          <i class="fas fa-chevron-down"></i>
-        </div>
+          <!--여기까지 부트스트랩 모달-->
+        </article>
       </div>
     </section>
-    <footer>
-      <div class="footer_info">CONTACT 1234@gmail.com</div>
-      <div class="footer_info">DEVELOPER 김가은 · 이도연 · 양소열</div>
-    </footer>
     <script>
+
+      // fiexd 네브바 코드
       $(".middle_horizon").hide();
       const scrollTargetEelement = $("#likecontents");
       const scrollTarget = scrollTargetEelement.offset().top;
@@ -296,8 +261,25 @@
         if(scrollValue > scrollTarget) $(".middle_horizon").fadeIn();
         if(scrollValue < scrollTarget) $(".middle_horizon").fadeOut();
       });
-      
+
+      $(".popup").hide();
+      // 모달 코드
+      const openPopup = (op) => {
+        console.log("팝업실행");
+        if(op == 'rentalInfo'){
+          $(".popup").empty();
+          $(".popup").append(`            
+          <h3>삭제하시겠습니까?</h3>
+          <h5>판매 게시글을 삭제하시면 더 이상 
+              해당 게시글에 대한 기록을 확인하실 수 없습니다</h5>
+          <button class="ok">삭제</button>
+          <button class="cancel" onclick="closePopup()">취소</button>`);
+        }
+        $(".popup").fadeIn();
+      }
+
+      const closePopup = () => {
+        $(".popup").fadeOut();
+      }
     </script>
-  </body>
-</html>
 {% endblock %}

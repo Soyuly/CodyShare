@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models.fields import CharField, DateField, IntegerField
 from django.db.models.fields.files import ImageField
 from account.models import Account
+from datetime import datetime
 
 # Create your models here.
 class Post(models.Model):
@@ -15,6 +16,10 @@ class Post(models.Model):
     start = DateField(auto_now=True)
     end = DateField(auto_now=True)
     fee = IntegerField()
+    pub_date = models.DateTimeField(default=datetime.now, blank=True)
+
+    def sum_content(self):
+        return self.content[:20]
 
 class Like(models.Model):
     user_id = models.ForeignKey(Account, on_delete=models.CASCADE)
