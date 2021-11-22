@@ -6,7 +6,8 @@ from .models import Post
 from django.contrib import auth
 import json
 from django.http import JsonResponse
-from .models import Post, Like,Reservation
+from .models import Post, Like,Reservation, Message
+
 
 # Create your views here.
 
@@ -26,12 +27,13 @@ def main_login(request, user_id):
 
 def mypage(request):
     user = request.user
-    posts = Post.objects.filter(user_id=user.id)
     user_obj = Account.objects.get(id=user.id)
+    sell_posts = Post.objects.filter(user_id=user.id)
+    
     likes = Like.objects.all()
     likes = likes.filter(user_id = user_obj)
-    print(user_obj)
-    return render(request, 'mypage.html', { 'user' : user_obj, 'likes' : likes, 'posts' : posts  })
+    print(likes)
+    return render(request, 'mypage.html', { 'user' : user_obj, 'likes' : likes, 'posts' : posts, 'sell_posts' : sell_posts   })
 
 
 def create(request):
@@ -40,6 +42,11 @@ def create(request):
 def detail(request,post_id):
     post = get_object_or_404(Post, pk=post_id)
     like = request.GET.get("like")
+    
+    if(request.GET.get("message")):
+        rid = post.user_id.id
+        print(post.user_id.id)
+        return redirect('/message/' + str(post_id) + '/' + str(rid))
 
     already = Like.objects.all()
     if(request.user.id):
@@ -48,7 +55,7 @@ def detail(request,post_id):
         already = already.filter(user_id = user_id)
     if(like):
         if already : 
-            messages.Error(request, "이미 스크랩한 게시글 입니다.")
+            already.delete()
         else:
             like = Like()
             like.user_id = user_id
@@ -57,7 +64,7 @@ def detail(request,post_id):
            
             
         return redirect('/detail/' + str(post_id))
-    return render(request,'detail.html', {'post':post})
+    return render(request,'detail.html', {'post':post, 'already':already})
 
 def create_backend(request):
     user = request.user
@@ -83,6 +90,7 @@ def create_backend(request):
     #     return render
 
 
+
 def rent(request):
     user = request.user
     reservation = Reservation()
@@ -94,3 +102,20 @@ def rent(request):
         reservation.state=0
         reservation.save()   
     return render(request, 'mypage.html')
+
+def message(request, rid, post_id):
+    print("message")
+    post = Post.objects.get(id = post_id)
+    me = Account.objects.get(id = request.user.id);
+    messages = Message.objects.filter(post_id = post).filter(recieve_id = me)
+    messages_send = Message.objects.filter(post_id = post).filter(send_id = me)
+    if request.method == "POST":
+        message = Message()
+        message.content = request.POST['content']
+        message.recieve_id = Account.objects.get(id = rid)
+        message.send_id = Account.objects.get(id = request.user.id);
+        message.post_id = Post.objects.get(id = post_id)
+        message.save()
+        print("성공")
+    return render(request,'message.html',{'rid':rid,'post_id':post_id,'messages':messages, 'messages_send':messages_send})
+
