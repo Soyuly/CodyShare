@@ -8,7 +8,7 @@ class Post(models.Model):
     user_id = models.ForeignKey(Account, on_delete=models.CASCADE)
     title = CharField(max_length=200)
     content = CharField(max_length=500)
-    img = ImageField()
+    img = ImageField(upload_to="img/")
     gender = CharField(max_length=20)
     cloth_type = CharField(max_length=20)
     size = CharField(max_length=10)
