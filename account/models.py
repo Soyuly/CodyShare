@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 class Account(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     nickname = models.CharField(max_length=100)
+    name = models.CharField(max_length=10)
+    address = models.TextField()
     birth = models.DateField()
     gender = models.CharField(max_length=5)
     # def str(self):

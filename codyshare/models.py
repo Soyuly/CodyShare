@@ -15,6 +15,3 @@ class Post(models.Model):
     start = DateField(auto_now=True)
     end = DateField(auto_now=True)
     fee = IntegerField()
-    
-
-    

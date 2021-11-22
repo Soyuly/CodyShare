@@ -19,7 +19,10 @@ def main_login(request, user_id):
         return render(request, 'main.html', {'user': user}) 
 
 def mypage(request):
-    return render(request, 'mypage.html')
+    user = request.user
+    user_obj = Account.objects.get(id=user.id)
+    print(user_obj)
+    return render(request, 'mypage.html', { 'user' : user_obj })
 
 def create(request):
     return render(request,'create.html')
