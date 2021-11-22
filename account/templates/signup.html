@@ -1,51 +1,57 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}" />
     <title>SIGNUP</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <div class="design-line--top"></div>
-        <h1 class="container__title">SIGNUP</h1>
-        <form class="form" action="">
-            <div class="form__box">
-                <h5 class="form__title">아이디</h5>
-                <input class="form__input" type="text" name="user_id">
-            </div>
-            <div class="form__box">
-                <h5 class="form__title">비밀번호</h5>
-                <input class="form__input" type="password" name="user_pwd">
-            </div>
-            <div class="form__box">
-                <h5 class="form__title">비밀번호 확인</h5>
-                <input class="form__input" type="password" name="user_pwd_check">
-            </div>
-            <div class="form__box">
-                <h5 class="form__title">닉네임</h5>
-                <input class="form__input" type="text" name="user_nickname">
-            </div>
-            <div class="form__box">
-                <h5 class="form__title">성별</h5>
-                <select class="form__input" name="user_gender" id="">
-                    <option value="male">남</option>
-                    <option value="female">여</option>
-                </select>
-            </div>
-            <div class="form__box">
-                <h5 class="form__title">생년월일</h5>
-                <input class="form__input" type="date" name="user_birth">
-            </div>
-            <div class="form__box">
-                <input class="form__submit" type="submit" id="login-submit" value="회원가입">
-                <button class="kakao-login">카카오 로그인</button>
-            </div>
-        </form>
-        <div class="design-line--bottom"></div>
+      <div class="design-line--top"></div>
+      <h1 class="container__title">SIGNUP</h1>
+      <form class="form" action="{% url 'signup_backend' %}" method="POST">
+        {% csrf_token %}
+        <div class="form__box">
+          <h5 class="form__title">아이디</h5>
+          <input class="form__input" type="text" name="id" />
+        </div>
+        <div class="form__box">
+          <h5 class="form__title">비밀번호</h5>
+          <input class="form__input" type="password" name="password" />
+        </div>
+        <div class="form__box">
+          <h5 class="form__title">비밀번호 확인</h5>
+          <input class="form__input" type="password" name="password_check" />
+        </div>
+        <div class="form__box">
+          <h5 class="form__title">닉네임</h5>
+          <input class="form__input" type="text" name="nickname" />
+        </div>
+        <div class="form__box">
+          <h5 class="form__title">성별</h5>
+          <select class="form__input" name="gender" id="">
+            <option value="male">남</option>
+            <option value="female">여</option>
+          </select>
+        </div>
+        <div class="form__box">
+          <h5 class="form__title">생년월일</h5>
+          <input class="form__input" type="date" name="birth" />
+        </div>
+        <div class="form__box">
+          <input
+            class="form__submit"
+            type="submit"
+            id="login-submit"
+            value="회원가입"
+          />
+          <button class="kakao-login">카카오 로그인</button>
+        </div>
+      </form>
+      <div class="design-line--bottom"></div>
     </div>
-</body>
+  </body>
 </html>

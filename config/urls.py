@@ -20,8 +20,11 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',views.main, name="main_logout"),
+    path('main/<str:user_id>', views.main_login, name='main'),
+    
     path('mypage', views.mypage, name="mypage"),
-    path('',views.main, name="main"),
+    
     path('', include('account.urls')), 
     path('create/',views.create, name="create"),
     path('detail/',views.detail, name="detail"),
