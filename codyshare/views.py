@@ -119,3 +119,5 @@ def message(request, rid, post_id):
         print("성공")
     return render(request,'message.html',{'rid':rid,'post_id':post_id,'messages':messages, 'messages_send':messages_send})
 
+def mobile(request):
+    return render(request, "mobile.html")
