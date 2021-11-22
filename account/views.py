@@ -78,5 +78,8 @@ def edit_account(request, user_id):
     user = get_object_or_404(Account, pk=user_id)
     return render(request, 'edit_account.html', {'user': user})
 
+def modify(request):
+    return render(request, 'modify.html')
+
 
 
