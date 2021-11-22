@@ -19,3 +19,9 @@ class Post(models.Model):
 class Like(models.Model):
     user_id = models.ForeignKey(Account, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
+
+class Message(models.Model):
+    send_id = models.ForeignKey(Account, on_delete=models.CASCADE,  related_name= 'send' )
+    recieve_id = models.ForeignKey(Account, on_delete=models.CASCADE,  related_name= 'recieve' )
+    post_id = models.ForeignKey(Post, on_delete=models.CASCADE)
+    content = models.TextField()

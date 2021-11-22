@@ -122,17 +122,17 @@
           {% for like in likes %}
           <div class="item_container">
             <img
-              src="{{like.img.url}}"
+              src="{{like.post.img.url}}"
             />
 
             <div class="info">
               <div class="info_title">
-                <span class="title">{{like.title}}</span>
+                <span class="title">{{like.post.title}}</span>
                 <span class="name">SOYUL</span>
               </div>
-              <div class="day">{{like.start}}</div>
+              <div class="day">{{like.post.start}}</div>
               <div class="contents">
-                {{like.content}}
+                {{like.post.content}}
               </div>
               <button class="far fa-star star_btn"></button>
             </div>

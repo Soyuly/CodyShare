@@ -16,9 +16,15 @@
     <a class="img_dir"style="margin-right:10px;" href=""
       ><img src="/static/img/direct.png" alt="채팅"
     /></a>
+    {% if already %}
     <form action="" method="get">
-        <button class="far fa-heart img_like" value="like" name="like"></button>
-</form>
+      <button class="fas fa-heart img_like" value="like" name="like"></button>
+  </form>
+    {% else %}
+    <form action="" method="get">
+      <button class="far fa-heart img_like" value="like" name="like"></button>
+  </form>
+  {% endif %}
 {% if messages %}
 <script>console.log("{{messages}}")</script>
     {% for message in messages %}

@@ -30,7 +30,7 @@ def mypage(request):
     user_obj = Account.objects.get(id=user.id)
     likes = Like.objects.all()
     likes = likes.filter(user_id = user_obj)
-    print(user_obj)
+    print(likes)
     return render(request, 'mypage.html', { 'user' : user_obj, 'likes' : likes, 'posts' : posts  })
 
 
@@ -48,7 +48,7 @@ def detail(request,post_id):
         already = already.filter(user_id = user_id)
     if(like):
         if already : 
-            messages.Error(request, "이미 스크랩한 게시글 입니다.")
+            already.delete()
         else:
             like = Like()
             like.user_id = user_id
@@ -57,7 +57,7 @@ def detail(request,post_id):
            
             
         return redirect('/detail/' + str(post_id))
-    return render(request,'detail.html', {'post':post})
+    return render(request,'detail.html', {'post':post, 'already':already})
 
 def create_backend(request):
     user = request.user
@@ -81,3 +81,6 @@ def create_backend(request):
     #     likes = Like.objects.all()
     #     likes = likes.filter(user_id = user_obj)
     #     return render
+
+def message(request):
+    return render(request,"message.html")
