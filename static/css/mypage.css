@@ -1,0 +1,363 @@
+@import url("https://fonts.googleapis.com/css2?family=Ramaraja&display=swap");
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+.notosanskr * {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+section .introduce {
+  margin-left: 14rem;
+  max-width: 190px;
+  padding: 26px 0px 26px 22px;
+  position: relative;
+  margin-top: 2em;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: bold;
+  font-size: 2.25rem;
+}
+
+section .introduce::before {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  content: "";
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-top: 5px solid black;
+  border-left: 5px solid black;
+}
+
+section .introduce::after {
+  position: absolute;
+  content: "";
+  bottom: 0px;
+  right: -20px;
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-bottom: 5px solid #b1b1b1;
+  border-right: 5px solid #b1b1b1;
+}
+
+.profile_card {
+  display: flex;
+  justify-content: center;
+  margin-top: 45px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 33px;
+  width: 60vw;
+  height: 35vh;
+  box-shadow: 15px 15px 40px 0px rgba(0, 0, 0, 0.07);
+}
+
+.profile_card .profile_image {
+  margin-left: 20px;
+  width: 23vw;
+  height: 33vh;
+  border-radius: 20px;
+  background-color: #d9d9d9;
+}
+.profile_card .profile_box {
+  display: flex;
+  flex-direction: column;
+
+  margin-left: 30px;
+}
+
+.profile_card .profile_box .profile_id {
+  width: 40vw;
+  border-bottom: 1px solid #e1e1e1;
+  padding-bottom: 10px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+
+.profile_card .profile_box .profile_detail {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  height: 33vh;
+}
+
+.profile_card .profile_box .profile_detail .row {
+  width: 40vw;
+  display: flex;
+  justify-content: space-between;
+}
+.profile_card .profile_box .profile_detail .name {
+  width: 10vw;
+  display: flex;
+}
+
+.profile_card .profile_detail .title_small {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 1rem;
+  color: #c4c4c4;
+  margin-right: 10px;
+}
+
+.profile_card .profile_detail .name_addr {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.profile_card .profile_detail .title_lend {
+  margin-right: 10px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.profile_card .profile_detail .lend_sell {
+  display: inline-block;
+  width: 80px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-align: right;
+}
+
+.profile_card .profile_detail .lend {
+  width: 10vw;
+  text-align: center;
+  margin-right: 30px;
+}
+
+.profile_btn_group {
+  align-self: flex-end;
+  display: flex;
+  width: 40vw;
+  height: 5vh;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  align-content: center;
+}
+
+.profile_btn_group .profile_btn {
+  width: 13vw;
+  height: 4vh;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+  background: inherit;
+  border: none;
+  border-top: 1px solid #e1e1e1;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.profile_btn_group .profile_btn:hover {
+  border: 1px solid black;
+}
+
+.profile_card .profile_edit {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 0.875rem;
+  color: #c4c4c4;
+  text-align: right;
+  margin-top: 10px;
+  margin-right: 30px;
+}
+
+/* 아이템 컨테이너 */
+.background_bottom {
+  background-color: #f9f9f9;
+  position: relative;
+  top: 50px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* border-top-left-radius: 10%;
+    border-top-right-radius: 10%; */
+}
+
+section .item_info {
+  margin-left: auto;
+  margin-right: auto;
+  width: 60vw;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+section .item_info .item_container {
+  position: relative;
+
+  background-color: white;
+  width: 260px;
+  height: 350px;
+  border-radius: 10px;
+  box-shadow: 15px 15px 40px 0px rgba(0, 0, 0, 0.07);
+  margin-bottom: 100px;
+  z-index: 2;
+}
+
+section .item_info .item_container img {
+  width: 260px;
+  height: 160px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-bottom: 8px;
+}
+
+section .item_info .item_container .info {
+  margin-left: 20px;
+  margin-right: 14px;
+}
+
+section .item_info .item_container .info .name {
+  font-family: "Noto Sans KR", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.6rem;
+  color: #707070;
+  margin-top: 6px;
+}
+
+section .item_info .item_container .info .title {
+  padding-bottom: 7px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.125rem;
+}
+
+section .item_info .item_container .info .day {
+  font-family: "Noto Sans KR", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.813rem;
+  color: #707070;
+  margin-bottom: 4px;
+}
+
+section .item_info .item_container .info .info_title {
+  display: flex;
+  align-content: flex-end;
+  width: 200px;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+section .item_info .item_container .info .contents {
+  font-family: "Noto Sans KR", sans-serif;
+  height: 100px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  overflow: scroll;
+}
+
+section .item_info .item_container .info .star_btn {
+  width: 230px;
+  display: flex;
+  background-color: inherit;
+  border: none;
+  justify-content: flex-end;
+}
+section .item_info .item_container .info .contents::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
+
+section .more {
+  width: inherit;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 0.938rem;
+  color: #898989;
+}
+
+section .mypage_btn_group {
+  margin-left: auto;
+  margin-right: auto;
+  width: 45vw;
+  display: flex;
+  margin-top: 50px;
+}
+
+section .like_title {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: bold;
+  font-size: 36px;
+  width: 60vw;
+  margin-top: 73px;
+  margin-bottom: 73px;
+  top: -20px;
+}
+
+.middle_horizon {
+  width: 100vw;
+  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.07);
+}
+
+section .item_info .item_container .info .contents_sell {
+  font-family: "Noto Sans KR", sans-serif;
+  height: 73px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  overflow: scroll;
+}
+
+.lend_btns {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  width: 220px;
+  justify-content: space-between;
+}
+
+.lend_btn {
+  width: 100px;
+  height: 30px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.3);
+  background-color: black;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 0.9rem;
+  color: white;
+}
+
+.sell_btns {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  width: 220px;
+  justify-content: flex-end;
+}
+.sell_btns button:first-child,
+.sell_btns button:nth-child(2) {
+  color: black;
+  border: none;
+  background-color: inherit;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-right: 7px;
+}
+
+footer {
+  margin-top: 10em;
+  margin-bottom: 3em;
+  margin-left: 18em;
+  margin-right: 18em;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 0.938rem;
+  color: #c4c4c4;
+}
+
+footer .footer_info {
+  margin-bottom: 5px;
+}
