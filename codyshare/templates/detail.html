@@ -1,19 +1,10 @@
-{% extends 'nav.html' %} {% load static %} {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>메인</title>
-    <link rel="stylesheet" href="{% static 'css/detail.css' %}" />
+{% extends 'base.html' %} {% load static %}
 
-    <script
-      src="https://kit.fontawesome.com/e4d6910b4e.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body>
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/detail.css' %}">
+{% endblock %}
+
+{% block content %}
       <div class="background_img">
 
       </div>
@@ -57,13 +48,4 @@
             </button>
         </div>
     </section>
-    
-    
-
-    <footer>
-      <div class="footer_info">CONTACT 1234@gmail.com</div>
-      <div class="footer_info">DEVELOPER 김가은 · 이도연 · 양소열</div>
-    </footer>
-  </body>
-</html>
 {% endblock %}
