@@ -187,3 +187,13 @@ footer {
 footer .footer_info {
   margin-bottom: 5px;
 }
+
+.img_like {
+  background-color: inherit;
+  border: none;
+  font-size: 2rem;
+}
+
+.title_flex {
+  display: flex;
+}

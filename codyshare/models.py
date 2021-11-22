@@ -21,7 +21,6 @@ class Post(models.Model):
     def sum_content(self):
         return self.content[:20]
 
-# class GiveBack(models.Model):
-#     seller = models.ForeignKey(Account, on_delete=models.CASCADE)
-#     buyer = models.ForeignKey(Account, on_delete=models.CASCADE)
-#     post = models.ForeignKey(Post, on_delete=models.CASCADE)
+class Like(models.Model):
+    user_id = models.ForeignKey(Account, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)

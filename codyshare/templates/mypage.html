@@ -114,32 +114,26 @@
         <div class="like_title" id="likecontents">찜목록</div>
 
         <article class="item_info">
+          {% for like in likes %}
           <div class="item_container">
             <img
-              src="https://image.msscdn.net/images/goods_img/20200306/1339280/1339280_1_500.jpg"
+              src="{{like.img.url}}"
             />
 
             <div class="info">
               <div class="info_title">
-                <span class="title">가디건 대여</span>
+                <span class="title">{{like.title}}</span>
                 <span class="name">SOYUL</span>
               </div>
-              <div class="day">20.07.11</div>
+              <div class="day">{{like.start}}</div>
               <div class="contents">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Officiis voluptate necessitatibus nobis dolorum voluptatibus
-                voluptatem esse sed tempora, exercitationem culpa earum nulla
-                numquam doloribus animi iure quo similique suscipit ratione?
+                {{like.content}}
               </div>
               <button class="far fa-star star_btn"></button>
             </div>
           </div>
-
-          <div class="item_container"></div>
-          <div class="item_container"></div>
-          <div class="item_container"></div>
-          <div class="item_container"></div>
-          <div class="item_container"></div>
+          {% endfor %}
+  
         </article>
       </div>
 
