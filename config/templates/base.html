@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="{% static 'css/nav.css' %}" />
+    {% block style %} {% endblock %}
   </head>
   <body>
     <header>
@@ -16,7 +17,12 @@
         <span><a class="link" href="{% url 'signup' %}">SIGNUP</a></span>
       </div>
     </header>
+    {% block content %} {% endblock %}
+    <footer>
+      <div class="footer_info">CONTACT 1234@gmail.com</div>
+      <div class="footer_info">DEVELOPER 김가은 · 이도연 · 양소열</div>
+    </footer>
   </body>
 </html>
 
-{% block content %} {% endblock %}
+
