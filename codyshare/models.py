@@ -15,3 +15,7 @@ class Post(models.Model):
     start = DateField(auto_now=True)
     end = DateField(auto_now=True)
     fee = IntegerField()
+
+class Like(models.Model):
+    user_id = models.ForeignKey(Account, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
