@@ -13,9 +13,13 @@
     <p class="categroy_gender">{{post.gender}}</p>
     <p class="categroy_type">{{post.cloth_type}}</p>
     <p class="title">{{post.title}}</p>
-    <a class="img_dir"style="margin-right:10px;" href=""
+    <form action="" method="get">
+      <button value="message" name="message" class="img_dir"style="margin-right:10px;" href=""
       ><img src="/static/img/direct.png" alt="채팅"
-    /></a>
+    /></button>
+
+    </form>
+
     {% if already %}
     <form action="" method="get">
       <button class="fas fa-heart img_like" value="like" name="like"></button>

@@ -34,7 +34,7 @@ urlpatterns = [
     path('detail/<str:post_id>',views.detail, name="detail"),
     path('create_backend/',
          views.create_backend, name='create_backend'),    
-    path('message/', views.message, name="message"),
+    path('message/<str:post_id>/<str:rid>', views.message, name="message"),
 ] 
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
