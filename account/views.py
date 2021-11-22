@@ -42,7 +42,9 @@ def signup_backend(request):
         account.nickname = request.POST['nickname']
         account.birth = request.POST['birth']
         account.gender = request.POST['gender']
-
+        account.name = request.POST['name']
+        account.address = "진주시"
+        print('회원가입')
         if User.objects.filter(username=request.POST['id']).exists():
             error = 1
             return render(request, 'signup.html', {'error': error})
@@ -50,7 +52,7 @@ def signup_backend(request):
         account.user = User.objects.create_user(
         username=request.POST['id'], password=request.POST['password'])
         account.save()
-        print('회원가입')
+     
     user = auth.authenticate(
         request, username=request.POST['id'], password=request.POST['password'])
 
