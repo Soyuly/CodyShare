@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% load static %} 
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/signupNmodify.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="design-line--top"></div>
+        <h1 class="container__title">회원정보수정</h1>
+        <form class="form" action="">
+            <div class="form__box">
+                <h5 class="form__title">아이디</h5>
+                <input class="form__input" type="text" name="user_id">
+            </div>
+            <div class="form__box">
+                <h5 class="form__title">비밀번호</h5>
+                <input class="form__input" type="password" name="user_pwd">
+            </div>
+            <div class="form__box">
+                <h5 class="form__title">비밀번호 확인</h5>
+                <input class="form__input" type="password" name="user_pwd_check">
+            </div>
+            <div class="form__box">
+                <h5 class="form__title">닉네임</h5>
+                <input class="form__input" type="text" name="user_nickname">
+            </div>
+            <div class="form__box">
+                <h5 class="form__title">성별</h5>
+                <select class="form__input form__input-select" name="user_gender" id="">
+                    <option value="male">남</option>
+                    <option value="female">여</option>
+                </select>
+            </div>
+            <div class="form__box">
+                <h5 class="form__title">생년월일</h5>
+                <input class="form__input form__input-date" type="date" name="user_birth">
+            </div>
+            <input class="form__submit form__submit-modify" type="submit" id="login-submit" value="수정하기">
+        </form>
+        <div class="design-line--bottom"></div>
+    </div>
+{% endblock %}

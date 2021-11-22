@@ -77,3 +77,6 @@ def edit_account_backend(request, user_id):
 def edit_account(request, user_id):
     user = get_object_or_404(Account, pk=user_id)
     return render(request, 'edit_account.html', {'user': user})
+
+
+
