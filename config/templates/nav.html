@@ -10,10 +10,10 @@
   </head>
   <body>
     <header>
-      <div class="logo">CS</div>
+      <div class="logo"><a href="{% url 'main' %}">CS</a></div>
       <div class="account">
-        <span><a href="#">LOGIN&nbsp;</a></span>
-        <span><a href="#">SIGNUP</a></span>
+        <span><a href="{% url 'login' %}">LOGIN&nbsp;</a></span>
+        <span><a href="{% url 'signup' %}">SIGNUP</a></span>
       </div>
     </header>
   </body>

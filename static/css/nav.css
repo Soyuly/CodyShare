@@ -42,7 +42,7 @@ header .account {
   font-size: 0.938rem;
 }
 
-header a {
+a {
   text-decoration: none;
   color: inherit;
 }
