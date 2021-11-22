@@ -24,9 +24,9 @@ def mypage(request):
     user_obj = Account.objects.get(id=user.id)
 
     # posts = Post.objects.all()
-    posts = Post.objects.filter(user_id=user.id)
+    sell_posts = Post.objects.filter(user_id=user.id)
 
-    return render(request, 'mypage.html', { 'user' : user_obj }, { 'posts' : posts })
+    return render(request, 'mypage.html', { 'user' : user_obj, 'sell_posts' : sell_posts })
 
 def create(request):
     return render(request,'create.html')

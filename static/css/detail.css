@@ -17,7 +17,7 @@
   line-height: 42px;
   color: rgb(180, 180, 180);
 }
-.categroy_gender {
+.categroy_gender, .categroy_type{
   border-radius: 5px;
   border: none;
   margin-left: 3rem;
@@ -25,13 +25,14 @@
   height: 1.5rem;
   text-align: center;
   background-color: white;
-  box-shadow: 3px 3px 10px #cfcfcf;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.07);
   margin-right: 0px;
   display: inline-block;
   font-weight: bold;
   font-size: 16px;
+  padding: 0.4rem;
 }
-.categroy_type {
+/* .categroy_type {
   border-radius: 5px;
   border: none;
   width: 4rem;
@@ -43,6 +44,10 @@
   display: inline-block;
   font-weight: bold;
   font-size: 16px;
+} */
+
+.categroy_type {
+  margin-left: 0.5rem;
 }
 
 section {
@@ -68,9 +73,20 @@ section .content {
   font-size: 1.2rem;
   font-weight: bold;
   margin-left: 2rem;
+  width: 55%;
 }
-.img_dir {
-  margin-left: 35rem;
+
+.icon-box {
+  margin-left: 2rem;
+  display: inline-block;
+}
+
+.icon-box a{
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  color: black;
+  margin-right: 1rem;
 }
 .detail {
   /* Rectangle 20 */
@@ -80,10 +96,28 @@ section .content {
   background: #dfdfdf;
   border-radius: 10px;
 }
-.content_p {
+
+.content_title {
   font-weight: bold;
   font-size: 1rem;
   margin-left: 3rem;
+  display: inline;
+  color: grey;
+}
+
+.content_p{
+  font-weight: bold;
+  font-size: 1rem;
+  margin-left: 3rem;
+  display: inline;
+}
+
+.date {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-left: 3rem;
+  display: inline;
+  margin-left: 0rem;
 }
 
 /* 이미지 업로드 */
@@ -92,9 +126,6 @@ section .content {
   text-align: center;
   border-radius: 5px;
   border: none;
-  width: 5rem;
-  height: 1.8rem;
-  box-shadow: 3px 3px 10px #cfcfcf;
 }
 .size {
   border-top: none;
@@ -116,7 +147,7 @@ section .content {
 }
 .cal {
   display: inline;
-  margin-left: 3rem;
+  margin-left: 2rem;
 }
 .cal .date {
   background: transparent url(../img/cal.png) 97% 50% no-repeat;
@@ -140,6 +171,8 @@ section .content {
   margin-left: 45rem;
   width: 150px;
   height: 50px;
+  font-size: 18px;
+  font-weight: bold;
 }
 footer {
   margin-top: 10em;
