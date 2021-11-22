@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %} {% load static %} {% block style %}
 <link rel="stylesheet" href="{% static 'css/detail.css' %}" />
 <script
@@ -9,39 +10,67 @@
 <section>
   <a class="go_main" href="./main.html">목록으로</a>
   <div class="content">
-    <div class="title_flex">
-      <p class="categroy_gender">{{post.gender}}</p>
-      <p class="categroy_type">{{post.cloth_type}}</p>
-      <p class="title">{{post.title}}</p>
-      <div class="icon-box">
-        <a class="icon icon_dir" href=""
-          ><i class="far fa-paper-plane"></i></a>
-        <form action="" method="get">
-            <button class="far fa-heart img_like" value="like" name="like"></button>
-        </form>
-      </div>
+      <div class="title_flex">
+    <p class="categroy_gender">{{post.gender}}</p>
+    <p class="categroy_type">{{post.cloth_type}}</p>
+    <p class="title">{{post.title}}</p>
+    <form action="" method="get">
+      <button value="message" name="message" class="img_dir"style="margin-right:10px;" href=""
+      ><img src="/static/img/direct.png" alt="채팅"
+    /></button>
+
+    </form>
+
+    {% if already %}
+    <form action="" method="get">
+      <button class="fas fa-heart img_like" value="like" name="like"></button>
+  </form>
+    {% else %}
+    <form action="" method="get">
+      <button class="far fa-heart img_like" value="like" name="like"></button>
+  </form>
+  {% endif %}
+{% if messages %}
+<script>console.log("{{messages}}")</script>
+    {% for message in messages %}
+        <script>alert("{{ message }}");</script>
+    {% endfor %}
+{% endif %}
+</div>
+    <img src="{{post.img.url}}" class="detail"></img>
+    <br />
+    <p class="content_p" style="display: inline">{{post.size}}</p>
+    <span class="sel" name="" id="" style="margin-left: 4rem"
+      >{{post.cloth_type}}</span
+    >
+    <input class="size" type="text" />
+    <a href=""
+      ><img
+        src="../../static/img/plus.png"
+        alt="사이즈칸 늘리는 버튼"
+        style="width: 1rem"
+    /></a>
+    <br />
+    <br />
+    <p class="content_p" style="display: inline">대여비</p>
+    <p class="content_p" style="display: inline; margin-left: 4.5rem">
+      {{post.fee}}
+    </p>
+
+    <br />
+    <p class="content_p" style="display: inline">대여기간</p>
+    <div class="cal">
+      <span class="date" type="date" name="dateofbirth" id="dateofbirth"
+        >{{post.start}}</span
+      >
     </div>
-    {% if messages %}
-    <script>console.log("{{messages}}")</script>
-        {% for message in messages %}
-            <script>alert("{{ message }}");</script>
-        {% endfor %}
-    {% endif %}
-      <img src="{{post.img.url}}" class="detail"></img>
-      <br />
-      <p class="content_title" name="" id="">사이즈</p>
-      <p class="content_p">{{post.size}}</p>
-      <br />
-      <p class="content_title">대여비</p>
-      <p class="content_p">{{post.fee}}</p>
-      <br />
-      <p class="content_title">대여기간</p>
-      <div class="cal">
-        <span class="date" type="date" name="dateofbirth" id="dateofbirth"
-          >{{post.start}} ~ {{post.end}}</span
-        >
-      </div>
-      <button type="submit" class="sub">예약하기</button>
+    <p class="content_p" style="display: inline">~</p>
+    <div class="cal">
+      <span class="date" type="date" name="dateofbirth" id="dateofbirth"
+        >{{post.end}}</span
+      >
+    </div>
+    <button type="submit" class="sub">예약하기</button>
   </div>
 </section>
 
