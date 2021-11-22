@@ -6,7 +6,7 @@ from .models import Post
 from django.contrib import auth
 import json
 from django.http import JsonResponse
-from .models import Post, Like
+from .models import Post, Like,Reservation
 
 # Create your views here.
 
@@ -81,3 +81,16 @@ def create_backend(request):
     #     likes = Like.objects.all()
     #     likes = likes.filter(user_id = user_obj)
     #     return render
+
+
+def rent(request):
+    user = request.user
+    reservation = Reservation()
+    if request.method == "POST":
+        reservation.buyer_id = Account.objects.get(id = user.id)
+        reservation.post_id = Post.objects.get(id = request.POST['post_id'])
+        reservation.rent_start = request.POST['rent_start']
+        reservation.rent_end = request.POST['rent_end']
+        reservation.state=0
+        reservation.save()   
+    return render(request, 'mypage.html')
