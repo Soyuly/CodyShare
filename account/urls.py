@@ -11,5 +11,5 @@ urlpatterns = [
     path('edit_account_backend/<str:user_id>', views.edit_account_backend,
          name='edit_account_backend'),
     path('edit_account/<str:user_id>', views.edit_account, name='edit_account'),
-  path('modify/',views.modify, name="modify"),
+  
 ]
