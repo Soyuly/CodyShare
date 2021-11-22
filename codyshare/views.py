@@ -14,9 +14,10 @@ def main(request):
 @login_required
 def main_login(request, user_id):
     user = get_object_or_404(Account, pk=user_id)
+    posts = Post.objects.all()
     if request.user.is_authenticated:
         print('성공')
-        return render(request, 'main.html', {'user': user}) 
+        return render(request, 'main.html', {'user': user, 'posts':posts}) 
 
 def mypage(request):
     user = request.user
@@ -28,7 +29,8 @@ def create(request):
     return render(request,'create.html')
 
 def detail(request,post_id):
-    return render(request,'detail.html')
+    post = get_object_or_404(Post, pk=post_id)
+    return render(request,'detail.html', {'post':post})
 
 def create_backend(request):
     user = request.user
