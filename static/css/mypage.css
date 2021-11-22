@@ -183,7 +183,7 @@ section .item_info {
   margin-right: auto;
   width: 60vw;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-wrap: wrap;
 }
 
@@ -202,10 +202,12 @@ section .item_info .item_container {
 section .item_info .item_container img {
   width: 260px;
   height: 160px;
+  object-fit: cover;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   margin-bottom: 8px;
 }
+
 
 section .item_info .item_container .info {
   margin-left: 20px;
@@ -223,11 +225,16 @@ section .item_info .item_container .info .name {
 
 section .item_info .item_container .info .title {
   padding-bottom: 7px;
+  margin-right: 0.7rem;
 
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
   font-size: 1.125rem;
+}
+
+section .item_info .item_container .info .title:hover {
+  text-decoration: underline;
 }
 
 section .item_info .item_container .info .day {
@@ -324,8 +331,9 @@ section .item_info .item_container .info .contents_sell {
   display: flex;
   flex-direction: row;
   margin-top: 10px;
-  width: 220px;
-  justify-content: space-between;
+  /* width: 220px; */
+  justify-content: flex-end;
+
 }
 
 .lend_btn {
@@ -338,6 +346,27 @@ section .item_info .item_container .info .contents_sell {
   font-family: "Noto Sans KR", sans-serif;
   font-size: 0.9rem;
   color: white;
+  margin-left:0.5rem;
+
+}
+
+.lend_btn.lend_btn-text {
+  background-color: white;
+  color: gray;
+  box-shadow: none;
+  font-size: 12px;
+  padding: 0 0.6rem 0 0;
+  margin: 0;
+  text-align: right;
+}
+
+.lend_btn.lend_btn-icon {
+  background-color: white;
+  color: black;
+  box-shadow: none;
+  width: 35px;
+  padding: 0;
+  margin: 0;
 }
 
 .sell_btns {
@@ -369,4 +398,57 @@ footer {
 
 footer .footer_info {
   margin-bottom: 5px;
+}
+
+
+/* 모달 */
+.popup {
+  width: 400px;
+  position: fixed;
+  top: calc(50vh - 150px);
+  left: calc(50vw - 100px);
+  background-color: black;
+  color: white;
+  z-index: 10;
+  border-radius: 10px;
+}
+
+.popup h3{
+  text-align: center;
+  margin: 2rem 2rem 1rem 2rem;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.popup h5{
+  text-align: center;
+  margin: 0.5rem 2rem;
+  font-size: 15px;
+}
+
+.popup .ok, .popup .cancel {
+  width: 40%;
+  background-color: white;
+  border-radius: 5px;
+  margin: 0 auto;
+  border: 1px solid black;
+}
+
+.popup .ok {
+  color: #DE0000;
+  margin: 0.5rem 2% 1rem 7%;
+}
+
+.popup .ok:hover{
+  background-color: #DE0000;
+  color: white;
+}
+
+.popup .cancel {
+  margin: 0.5rem 7% 1rem 2%;
+}
+
+.popup .cancel:hover{
+  background-color: #4273D1;
+  color: white;
 }
