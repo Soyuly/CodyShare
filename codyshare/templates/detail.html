@@ -1,4 +1,5 @@
 
+
 {% extends 'base.html' %} {% load static %} {% block style %}
 <link rel="stylesheet" href="{% static 'css/detail.css' %}" />
 <script
@@ -37,41 +38,55 @@
     {% endfor %}
 {% endif %}
 </div>
-    <img src="{{post.img.url}}" class="detail"></img>
-    <br />
-    <p class="content_p" style="display: inline">{{post.size}}</p>
-    <span class="sel" name="" id="" style="margin-left: 4rem"
-      >{{post.cloth_type}}</span
-    >
-    <input class="size" type="text" />
-    <a href=""
-      ><img
-        src="../../static/img/plus.png"
-        alt="사이즈칸 늘리는 버튼"
-        style="width: 1rem"
-    /></a>
-    <br />
-    <br />
-    <p class="content_p" style="display: inline">대여비</p>
-    <p class="content_p" style="display: inline; margin-left: 4.5rem">
-      {{post.fee}}
-    </p>
+    <form action="{% url 'rent' %}" method="post">
+      <img src="{{post.img.url}}" class="detail"></img>
+      <br />
+      <p class="content_p" style="display: inline">{{post.size}}</p>
+      <span class="sel" name="" id="" style="margin-left: 4rem"
+        >{{post.cloth_type}}</span
+      >
+      <input class="size" type="text" />
+      <a href=""
+        ><img
+          src="../../static/img/plus.png"
+          alt="사이즈칸 늘리는 버튼"
+          style="width: 1rem"
+      /></a>
+      <br />
+      <br />
+      <p class="content_p" style="display: inline">대여비</p>
+      <p class="content_p" style="display: inline; margin-left: 4.5rem">
+        {{post.fee}}
+      </p>
 
-    <br />
-    <p class="content_p" style="display: inline">대여기간</p>
-    <div class="cal">
-      <span class="date" type="date" name="dateofbirth" id="dateofbirth"
-        >{{post.start}}</span
-      >
-    </div>
-    <p class="content_p" style="display: inline">~</p>
-    <div class="cal">
-      <span class="date" type="date" name="dateofbirth" id="dateofbirth"
-        >{{post.end}}</span
-      >
-    </div>
-    <button type="submit" class="sub">예약하기</button>
+      <br />
+      <p class="content_p" style="display: inline">대여가능기간</p>
+      <div class="cal">
+        <span class="date" type="date" name="dateofbirth" id="dateofbirth"
+          >{{post.start}}</span
+        >
+      </div>
+      <p class="content_p" style="display: inline">~</p>
+      <div class="cal">
+        <span class="date" type="date" name="dateofbirth" id="dateofbirth"
+          >{{post.end}}</span
+        >
+      </div>
+
+      <p style="display: inline">대여기간</p>
+        <div class="cal">
+          <input type="date" name="rent_start" id="dateofbirth" />
+        </div>
+        <p style="display: inline">~</p>
+        <div class="cal">
+          <input type="date" name="rent_end" id="dateofbirth" />
+        </div>
+        <input type="text" name="post_id" value="{{post.id}}" hidden>
+
+      <button type="submit" class="sub">예약하기</button>
+    </
   </div>
 </section>
 
 {% endblock %}
+

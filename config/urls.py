@@ -28,6 +28,7 @@ urlpatterns = [
     path('main/<str:user_id>', views.main_login, name='main'),
 
     path('mypage', views.mypage, name="mypage"),
+    path('rent', views.rent, name="rent"),
     
     path('', include('account.urls')), 
     path('create/',views.create, name="create"),
