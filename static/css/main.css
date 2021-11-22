@@ -218,3 +218,17 @@ footer {
 footer .footer_info {
   margin-bottom: 5px;
 }
+.item_container_create {
+  position: relative;
+  top: -100px;
+  background-color: white;
+  width: 260px;
+  height: 350px;
+  border-radius: 10px;
+  box-shadow: 15px 15px 40px 0px rgba(0, 0, 0, 0.07);
+  margin-bottom: 100px;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
