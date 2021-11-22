@@ -21,5 +21,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.main, name="main"),
-    path('account/', include('account.urls')), #로 축약
+    path('account/', include('account.urls')), 
+    path('create/',views.create, name="create"),
+    path('detail/',views.detail, name="detail"),
 ]
