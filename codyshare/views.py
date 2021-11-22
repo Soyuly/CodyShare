@@ -31,8 +31,8 @@ def mypage(request):
     
     likes = Like.objects.all()
     likes = likes.filter(user_id = user_obj)
-    print(user_obj)
-    return render(request, 'mypage.html', { 'user' : user_obj, 'likes' : likes, 'posts' : posts , 'sell_posts' : sell_posts })
+
+    return render(request, 'mypage.html', { 'user' : user_obj, 'likes' : likes, 'sell_posts' : sell_posts })
 
 def create(request):
     return render(request,'create.html')
