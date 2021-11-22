@@ -9,38 +9,39 @@
 <section>
   <a class="go_main" href="./main.html">목록으로</a>
   <div class="content">
-      <div class="title_flex">
-    <p class="categroy_gender">{{post.gender}}</p>
-    <p class="categroy_type">{{post.cloth_type}}</p>
-    <p class="title">{{post.title}}</p>
-    <div class="icon-box">
-      <a class="icon icon_dir" href=""
-        ><i class="far fa-paper-plane"></i></a>
-      <form action="" method="get">
-          <button class="far fa-heart img_like" value="like" name="like"></button>
-      </form>
+    <div class="title_flex">
+      <p class="categroy_gender">{{post.gender}}</p>
+      <p class="categroy_type">{{post.cloth_type}}</p>
+      <p class="title">{{post.title}}</p>
+      <div class="icon-box">
+        <a class="icon icon_dir" href=""
+          ><i class="far fa-paper-plane"></i></a>
+        <form action="" method="get">
+            <button class="far fa-heart img_like" value="like" name="like"></button>
+        </form>
+      </div>
     </div>
-  {% if messages %}
-  <script>console.log("{{messages}}")</script>
-      {% for message in messages %}
-          <script>alert("{{ message }}");</script>
-      {% endfor %}
-  {% endif %}
-    <img src="{{post.img.url}}" class="detail"></img>
-    <br />
-    <p class="content_title" name="" id="">사이즈</p>
-    <p class="content_p">{{post.size}}</p>
-    <br />
-    <p class="content_title">대여비</p>
-    <p class="content_p">{{post.fee}}</p>
-    <br />
-    <p class="content_title">대여기간</p>
-    <div class="cal">
-      <span class="date" type="date" name="dateofbirth" id="dateofbirth"
-        >{{post.start}} ~ {{post.end}}</span
-      >
-    </div>
-    <button type="submit" class="sub">예약하기</button>
+    {% if messages %}
+    <script>console.log("{{messages}}")</script>
+        {% for message in messages %}
+            <script>alert("{{ message }}");</script>
+        {% endfor %}
+    {% endif %}
+      <img src="{{post.img.url}}" class="detail"></img>
+      <br />
+      <p class="content_title" name="" id="">사이즈</p>
+      <p class="content_p">{{post.size}}</p>
+      <br />
+      <p class="content_title">대여비</p>
+      <p class="content_p">{{post.fee}}</p>
+      <br />
+      <p class="content_title">대여기간</p>
+      <div class="cal">
+        <span class="date" type="date" name="dateofbirth" id="dateofbirth"
+          >{{post.start}} ~ {{post.end}}</span
+        >
+      </div>
+      <button type="submit" class="sub">예약하기</button>
   </div>
 </section>
 
