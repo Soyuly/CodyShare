@@ -2,6 +2,7 @@
 
 {% block style %}
 <link rel="stylesheet" href="{% static 'css/signupNmodify.css' %}">
+
 {% endblock %}
 
 {% block content %}
@@ -41,10 +42,7 @@
           <h5 class="form__title">생년월일</h5>
           <input class="form__input form__input-date" type="date" name="birth" />
         </div>
-        <div class="form__box">
-            <h5 class="form__title">주소</h5>
-            <input class="form__input" type="text" name="address" />
-        </div>
+        <input type="text" value="{{located}}" hidden>
         <div class="form__box">
           <input
             class="form__submit"
