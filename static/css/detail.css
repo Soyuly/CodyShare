@@ -26,7 +26,7 @@
   text-align: center;
   background-color: white;
   box-shadow: 3px 3px 10px #cfcfcf;
-  margin-right: 0px;
+  margin-right: 5px;
   display: inline-block;
   font-weight: bold;
   font-size: 16px;
@@ -153,4 +153,14 @@ footer {
 
 footer .footer_info {
   margin-bottom: 5px;
+}
+
+.img_like {
+  background-color: inherit;
+  border: none;
+  font-size: 2rem;
+}
+
+.title_flex {
+  display: flex;
 }
