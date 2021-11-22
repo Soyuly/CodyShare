@@ -2,10 +2,12 @@ from django.core.checks import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from account.models import Account
+from .models import Post
 from django.contrib import auth
 import json
 from django.http import JsonResponse
 from .models import Post, Like
+
 # Create your views here.
 
 
@@ -24,11 +26,13 @@ def main_login(request, user_id):
 
 def mypage(request):
     user = request.user
+    posts = Post.objects.filter(user_id=user.id)
     user_obj = Account.objects.get(id=user.id)
     likes = Like.objects.all()
     likes = likes.filter(user_id = user_obj)
     print(user_obj)
-    return render(request, 'mypage.html', { 'user' : user_obj, 'likes' : likes })
+    return render(request, 'mypage.html', { 'user' : user_obj, 'likes' : likes, 'posts' : posts  })
+
 
 def create(request):
     return render(request,'create.html')

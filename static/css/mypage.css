@@ -300,6 +300,15 @@ section .like_title {
 .middle_horizon {
   width: 100vw;
   box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.07);
+  background-color: white;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  height: 45px;
+}
+
+.middle_horizon > .profile_btn_group{
+  margin: 0 auto;
 }
 
 section .item_info .item_container .info .contents_sell {

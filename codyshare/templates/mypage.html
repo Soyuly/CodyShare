@@ -32,14 +32,14 @@
           class="profile_image"
         />
         <div class="profile_box">
-          <div class="profile_id">{{ user.user }}</div>
+          <div class="profile_id">{{ user.nickname }}</div>
           <div class="profile_detail">
             <div>
               <div class="row">
                 <!-- 이름 -->
                 <div class="name">
                   <span class="title_small">이름</span>
-                  <span class="name_addr">김가은</span>
+                  <span class="name_addr">{{ user.name }}</span>
                 </div>
 
                 <!-- 대여수 -->
@@ -53,7 +53,7 @@
                 <!-- 주소 -->
                 <div class="name">
                   <span class="title_small">주소</span>
-                  <span class="name_addr">진주시 가좌동</span>
+                  <span class="name_addr">{{ user.address }}</span>
                 </div>
 
                 <div class="lend">
@@ -92,7 +92,7 @@
       </article>
 
       <div class="middle_horizon">
-        <div class="profile_btn_group" style="margin-top: 100px">
+        <div class="profile_btn_group" style="">
           <button
             class="profile_btn"
             onclick="location.href = '#likecontents' "
@@ -157,10 +157,11 @@
               src="https://image.msscdn.net/images/goods_img/20200306/1339280/1339280_1_500.jpg"
             />
 
+            {% for post in posts %}
             <div class="info">
               <div class="info_title">
-                <span class="title">가디건 대여</span>
-                <span class="name">SOYUL</span>
+                <span class="title">}</span>
+                <span class="name">{{ post.title }}</span>
               </div>
               <div class="day">20.07.11</div>
               <div class="contents_sell">
@@ -176,6 +177,7 @@
               </div>
             </div>
           </div>
+          {% endfor %}
 
           <div class="item_container"></div>
           <div class="item_container"></div>
@@ -284,6 +286,18 @@
       <div class="footer_info">CONTACT 1234@gmail.com</div>
       <div class="footer_info">DEVELOPER 김가은 · 이도연 · 양소열</div>
     </footer>
+    <script>
+      $(".middle_horizon").hide();
+      const scrollTargetEelement = $("#likecontents");
+      const scrollTarget = scrollTargetEelement.offset().top;
+      $(window).scroll(function () { 
+        var scrollValue = $(document).scrollTop();
+        //console.log(scrollValue); 
+        if(scrollValue > scrollTarget) $(".middle_horizon").fadeIn();
+        if(scrollValue < scrollTarget) $(".middle_horizon").fadeOut();
+      });
+      
+    </script>
   </body>
 </html>
 {% endblock %}

@@ -84,4 +84,12 @@ def modify(request):
     return render(request, 'modify.html')
 
 
+def map(request):
+    return render(request, 'map.html')
 
+
+def mapvalue(request):
+    print("값",request.POST['address'])
+    if request.method == "POST":
+        located=request.POST['address']
+    return render(request,'signup.html',{'located':located})
