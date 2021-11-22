@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from account.models import Account
+from .models import Post
 from django.contrib import auth
 import json
 from django.http import JsonResponse
-from .models import Post
 # Create your views here.
 
 
@@ -21,8 +21,11 @@ def main_login(request, user_id):
 def mypage(request):
     user = request.user
     user_obj = Account.objects.get(id=user.id)
-    print(user_obj)
-    return render(request, 'mypage.html', { 'user' : user_obj })
+
+    # posts = Post.objects.all()
+    posts = Post.objects.filter(user_id=user.id)
+
+    return render(request, 'mypage.html', { 'user' : user_obj }, { 'posts' : posts })
 
 def create(request):
     return render(request,'create.html')
