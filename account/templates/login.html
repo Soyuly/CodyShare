@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <title>Login</title>
+</head>
+<body>
+    <div class="container">
+        <div class="container-left">
+            <div class="design-line--top"></div>
+            <h1 class="container-left__title">LOGIN</h1>
+            <form class="form" action="">
+                <div class="form__box">
+                    <h5 class="form__title">ID</h5>
+                    <input class="form__input" type="text" name="user_id">
+                </div>
+                <div class="form__box">
+                    <h5 class="form__title">PW</h5>
+                    <input class="form__input" type="password" name="user_pwd">
+                </div>
+                <div class="form__box">
+                    <input class="form__checkbox" type="checkbox" id="save-id"><label for="save-id" class="save-id">아이디 저장하기</label>
+                    <button class="form__find-pw">비밀번호 찾기</button>
+                </div>
+                <div class="form__box">
+                    <input class="form__submit" type="submit" id="login-submit" value="로그인">
+                    <button class="kakao-login">카카오 로그인</button>
+                </div>
+            </form>
+            <div class="container-left__signup-text">
+                <p>아이디가 없다면? <a href=""><strong>회원가입하기</strong></a></p>
+            </div>
+            <div class="design-line--bottom"></div>
+        </div>
+        <div class="container-right">
+            <div class="content">
+                <!-- <h1 class="text__title">CODYSHARE</h1> -->
+                <img class="content__title" src="{% static 'svg/logo_login.svg'%}" alt="">
+                <p class="content__detail">나만의 개성있는 코디를 완성해보세요</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
