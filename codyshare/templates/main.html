@@ -36,7 +36,8 @@
   <div class="background_bottom">
     <article>
       {% for post in posts %}
-      <div
+      <div>
+        <div
         class="item_container"
         onclick="location.href='{% url 'detail' post.id %}'"
       >
@@ -49,6 +50,8 @@
           <div class="contents">{{post.content}}</div>
         </div>
       </div>
+      </div>
+     
       {% endfor %}
       <div
         class="item_container_create"
