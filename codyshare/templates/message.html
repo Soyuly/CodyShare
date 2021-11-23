@@ -1,26 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <form action="{% url 'message' post_id rid %}" method="POST">
+{% extends 'base.html' %} {% load static %} 
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/message.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="design-line--top"></div>
+    <h1>쪽지</h1>
+    <form class="message-form"action="{% url 'message' post_id rid %}" method="POST">
       {% csrf_token %}
-      <input type="text" name="content" />
-      <button type="submit">제출</button>
+      <input class="message-form__input"type="text" name="content" />
+      <button class="message-form__submit" type="submit">전송</button>
     </form>
-
+    <div class="message-box">
     {% for message in messages %}
-    <script>
+    <!-- <script>
       console.log("{{message.recieve_id.id}}");
-    </script>
+    </script> -->
     {% if message.send_id.id != request.user.id %}
-    <p style="color: blue">{{message.content}}</p>
-    {%endif %} {% endfor %} {% for message_send in messages_send %}
-    <p style="color: red">{{message_send.content}}</p>
-    {% endfor %}
-  </body>
-</html>
+      <div>
+        <p class="message recieve">{{message.content}}</p>
+      </div>
+      {% endif %} {% endfor %} {% for message_send in messages_send %}
+      <div>
+        <p class="message send">{{message_send.content}}</p>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="design-line--bottom"></div>
+  </div>
+  {% endblock %}
