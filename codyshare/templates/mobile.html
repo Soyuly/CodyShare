@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,7 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
+  <style>
+    img {
+      max-width: 100%;
+    }
+  </style>
   <body>
-    <h1>데스크톱으로 접속해주세요!!</h1>
+    <img src="{% static 'img/소개페이지.png' %}" />
   </body>
 </html>
