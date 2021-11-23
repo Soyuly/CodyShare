@@ -36,11 +36,21 @@ def mypage(request):
     user = request.user
     user_obj = Account.objects.get(id=user.id)
     sell_posts = Post.objects.filter(user_id=user.id)
-    
+    rent_posts=Reservation.objects.filter(buyer_id=user_obj)
+    arr_sell=[]
+    arr_confirm=[]
+    for sell_obj in sell_posts:
+        get_post=Reservation.objects.get(post_id=sell_obj.id)
+        if(get_post.state==0):
+            arr_sell.append(get_post.buyer_id.nickname)
+    for sell_obj in sell_posts:
+        get_post=Reservation.objects.get(post_id=sell_obj.id)
+        if(get_post.state==1):
+            arr_confirm.append(get_post.buyer_id.nickname)
     likes = Like.objects.all()
     likes = likes.filter(user_id = user_obj)
     print(likes)
-    return render(request, 'mypage.html', { 'user' : user_obj, 'likes' : likes, 'sell_posts' : sell_posts   })
+    return render(request, 'mypage.html', { 'user' : user_obj, 'likes' : likes, 'sell_posts' : sell_posts  ,'rent_posts':rent_posts,'arr_sell':arr_sell,'arr_confirm':arr_confirm })
 
 
 def create(request):
@@ -104,11 +114,11 @@ def rent(request):
     if request.method == "POST":
         reservation.buyer_id = Account.objects.get(id = user.id)
         reservation.post_id = Post.objects.get(id = request.POST['post_id'])
-        reservation.rent_start = request.POST['rent_start']
-        reservation.rent_end = request.POST['rent_end']
+        reservation.rent_start = request.POST['start']
+        reservation.rent_end = request.POST['end']
         reservation.state=0
         reservation.save()   
-    return render(request, 'mypage.html')
+    return render(request,'main.html')
 
 def message(request, rid, post_id):
     print("message")
@@ -138,3 +148,14 @@ def message(request, rid, post_id):
 
 def mobile(request):
     return render(request, "mobile.html")
+
+
+def apply(request,apply_mem):
+    buyer = Account.objects.get(nickname = apply_mem)
+    get_post=Reservation.objects.get(buyer_id=buyer)
+    if get_post.state==0:
+        get_post.state=1
+    get_post.save()
+
+    return redirect('/mypage')
+

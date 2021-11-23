@@ -39,9 +39,11 @@
     {% endfor %}
 {% endif %}
 </div>
-    
+    <form action="{% url 'rent' %}" method="post">
+      {% csrf_token %}
       <img src="{{post.img.url}}" class="detail"></img>
       <form action="{% url 'rent' %}" method="post" class="rentForm">
+        <input type="text" hidden value="{{post.id}} " name="post_id">
       <div>
         <span class="size_title">사이즈</span> <span class="value">{{post.size}}</span>
       </div>
@@ -52,14 +54,19 @@
       </div>
 
       <div>
-        <span class="size_title">대여기간</span> <span class="value">{{post.start}} 
+        <span class="size_title">대여 가능기간</span> <span class="value">{{post.start}} 
           ~ {{post.end}} 
         </span>
       </div>
-
+      <div>
+        <span class="size_title">대여 기간</span> <span class="value cal"><input style="border: none;"type="date" name="start" id="dateofbirth" /> 
+          ~ <input type="date" name="end" id="dateofbirth" /> 
+        </span>
+      </div>
+      
 
       <button type="submit" class="sub">예약하기</button>
-    
+    </form>
   </div>
 </section>
 

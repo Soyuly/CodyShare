@@ -29,7 +29,7 @@ class Like(models.Model):
     
     def sum_content(self):
         return self.content[:20]
-      
+    
 class Reservation(models.Model):
     buyer_id=models.ForeignKey(Account, on_delete=models.CASCADE)
     post_id=models.ForeignKey(Post, on_delete=models.CASCADE)

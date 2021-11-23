@@ -40,7 +40,7 @@
             <!-- 주소 -->
             <div class="name">
               <span class="title_small">주소</span>
-              <span class="name_addr">{{ user.address }}</span>
+              <div class="name_addr">{{ user.address }}</div>
             </div>
 
             <div class="lend">
@@ -120,19 +120,19 @@
     <div class="like_title" id="lendcontents">대여 목록</div>
 
     <article class="item_info">
-      {% for post in posts %}
+      {% for rent_posts in rent_posts %}
       <div
         class="item_container"
-        onclick="location.href='{% url 'detail' post.id %}'"
+        onclick="location.href='{% url 'detail' rent_posts.post_id %}'"
       >
-        <img src="{{post.img.url}}" />
+        <img src="{{rent_posts.post_id.img.url}}" />
         <div class="info">
           <div class="info_title">
-            <span class="title">{{ post.title }}</span>
-            <span class="name">{{ post.user_id.nickname }}</span>
+            <span class="title">{{ rent_posts.post_id.title }}</span>
+            <span class="name">{{ rent_posts.post_id.user_id.nickname }}</span>
           </div>
-          <div class="day">{{ post.pub_date }}</div>
-          <div class="contents_sell">{{ post.sum_content }}</div>
+          <div class="day">{{ rent_posts.post_id.pub_date }}</div>
+          <div class="contents_sell">{{ rent_posts.post_id.sum_content }}</div>
 
           <div class="lend_btns">
             <button class="lend_btn">연장하기</button>
@@ -140,8 +140,9 @@
           </div>
         </div>
       </div>
+      
       {% endfor %}
-      <div class="item_container"></div>
+      
     </article>
   </div>
 
@@ -151,7 +152,8 @@
 
     <article class="item_info">
       {% for post in sell_posts %}
-      <div class="item_container">
+      <div class="item_container-flip">
+      <div class="item_container front" data-sur="front">
         <img src="{{post.img.url}}" />
         <div class="info">
           <div class="info_title">
@@ -181,6 +183,30 @@
           </div>
         </div>
       </div>
+      <div class="item_container back">
+                <p>신청한 사람 목록</p>
+        <ul>
+          {% for arr_sell in arr_sell %}
+      
+            <li>{{arr_sell}}</li>
+            <a href="{% url 'apply' arr_sell %}">승인하기</a>
+        
+          {% endfor%}
+
+        </ul>
+        
+        <p>승인된 사람</p>
+        <ul>
+          {% for arr_confirm in arr_confirm %}
+      
+            <li>{{arr_confirm}}</li>
+
+        
+          {% endfor%}
+        </ul>
+        <button class="lend_btn">대여 정보</button>
+      </div>
+    </div>
       {% endfor %}
 
       <!--modal-->
@@ -230,6 +256,8 @@
     </article>
   </div>
 </section>
+
+
 <script>
   // fiexd 네브바 코드
   $(".middle_horizon").hide();
@@ -262,4 +290,5 @@
     $(".popup").fadeOut();
   };
 </script>
+<script src="{% static 'js/animation.js' %}"></script>
 {% endblock %}
