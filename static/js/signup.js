@@ -8,6 +8,7 @@ $("input, select").change(function(){
     $inputEelement.each(function(index, item){
         if(item.value){
         }else {
+            console.log(item);
             canSignup = false;
         }
     });

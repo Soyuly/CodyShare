@@ -105,6 +105,8 @@ section .introduce::after {
   font-family: "Noto Sans KR", sans-serif;
   font-size: 1rem;
   font-weight: bold;
+  display: inline-block;
+  width: 80%;
 }
 
 .profile_card .profile_detail .title_lend {
