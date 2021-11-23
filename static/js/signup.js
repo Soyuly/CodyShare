@@ -67,5 +67,5 @@ const getAddr = () => {
             }
           })})};
 
+          getAddr();
 
-getAddr();
