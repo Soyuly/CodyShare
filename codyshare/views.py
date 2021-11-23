@@ -5,9 +5,10 @@ from django.contrib.auth.decorators import login_required
 from account.models import Account
 from .models import Post
 from django.contrib import auth
-import json
+import json, requests, os
 from django.http import JsonResponse
 from .models import Post, Like,Reservation, Message
+
 from datetime import date, datetime
 
 
