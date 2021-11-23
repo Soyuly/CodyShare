@@ -34,19 +34,21 @@ def main_login(request, user_id):
 
 def mypage(request):
     user = request.user
-    user_obj = Account.objects.get(id=user.id)
-    sell_posts = Post.objects.filter(user_id=user.id)
-    rent_posts=Reservation.objects.filter(buyer_id=user_obj)
-    arr_sell=[]
-    arr_confirm=[]
+    user_obj = Account.objects.get(id=user.id) #현재 사용자 user정보
+    sell_posts = Post.objects.filter(user_id=user.id) #사용자가 쓴 판매게시글
+    rent_posts=Reservation.objects.filter(buyer_id=user_obj) # reservation row들 중에 사용자가 판매한 게시글이 예약신청된 row
+    arr_sell=[] #신청한 멤버들의 닉네임을 받음
+    arr_confirm=[] #승인된 멤버들의 닉네임을 받음
     for sell_obj in sell_posts:
-        get_post=Reservation.objects.get(post_id=sell_obj.id)
-        if(get_post.state==0):
-            arr_sell.append(get_post.buyer_id.nickname)
+        get_posts=Reservation.objects.filter(post_id=sell_obj.id)
+        for get_post in get_posts:
+            if(get_post.state==0):
+                arr_sell.append(get_post.buyer_id.nickname)
     for sell_obj in sell_posts:
-        get_post=Reservation.objects.get(post_id=sell_obj.id)
-        if(get_post.state==1):
-            arr_confirm.append(get_post.buyer_id.nickname)
+        get_posts=Reservation.objects.filter(post_id=sell_obj.id)
+        for get_post in get_posts:
+            if(get_post.state==1):
+                arr_confirm.append(get_post.buyer_id.nickname)            
     likes = Like.objects.all()
     likes = likes.filter(user_id = user_obj)
     print(likes)
@@ -128,18 +130,8 @@ def message(request, rid, post_id):
     messages_send = Message.objects.filter(post_id = post).filter(send_id = me)
     if request.method == "POST":
         message = Message()
-        target = request.POST.get('target')
-        print(request.user.id)
-        print(rid)
-        if(request.user.id == rid):
-            error = 1
-            return render(request,'message.html',{'rid':rid,'post_id':post_id,'messages':messages, 'messages_send':messages_send, 'error': error})
-        if(target!="판매자"):
-            message.recieve_id = Account.objects.get(nickname = target)
-        if(target == "판매자"): 
-            message.recieve_id = Account.objects.get(id = rid)
-        
         message.content = request.POST['content']
+        message.recieve_id = Account.objects.get(id = rid)
         message.send_id = Account.objects.get(id = request.user.id);
         message.post_id = Post.objects.get(id = post_id)
         message.save()
@@ -152,10 +144,11 @@ def mobile(request):
 
 def apply(request,apply_mem):
     buyer = Account.objects.get(nickname = apply_mem)
-    get_post=Reservation.objects.get(buyer_id=buyer)
-    if get_post.state==0:
-        get_post.state=1
-    get_post.save()
+    get_posts=Reservation.objects.filter(buyer_id=buyer)
+    for get_post in get_posts:
+        if get_post.state==0:
+            get_post.state=1            
+        get_post.save()
 
     return redirect('/mypage')
 
