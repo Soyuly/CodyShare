@@ -39,6 +39,7 @@ def signup(request):
 def signup_backend(request):
     if request.method  == 'POST':
         account = Account()
+        account.photo = request.FILES['photo']
         account.nickname = request.POST['nickname']
         account.birth = request.POST['birth']
         account.gender = request.POST['gender']

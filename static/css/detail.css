@@ -8,16 +8,20 @@
   z-index: -99999;
 }
 .go_main {
-  display: block;
+  width: 80px;
   margin-left: 19.5rem;
-  margin-top: 5rem;
+  margin-bottom: 20px;
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
-  line-height: 42px;
+  border: none;
+  background-color: inherit;
   color: rgb(180, 180, 180);
+
+  border-bottom: 1px solid #c4c4c4;
 }
-.categroy_gender, .categroy_type{
+.categroy_gender,
+.categroy_type {
   border-radius: 5px;
   border: none;
   margin-left: 3rem;
@@ -81,7 +85,7 @@ section .content {
   display: inline-block;
 }
 
-.icon-box a{
+.icon-box a {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -95,6 +99,7 @@ section .content {
   margin-left: 2.1rem;
   background: #dfdfdf;
   border-radius: 10px;
+  margin-top: 20px;
 }
 
 .content_title {
@@ -105,7 +110,7 @@ section .content {
   color: grey;
 }
 
-.content_p{
+.content_p {
   font-weight: bold;
   font-size: 1rem;
   margin-left: 3rem;
@@ -173,6 +178,7 @@ section .content {
   height: 50px;
   font-size: 18px;
   font-weight: bold;
+  margin-top: 30px;
 }
 footer {
   margin-top: 10em;
@@ -196,4 +202,30 @@ footer .footer_info {
 
 .title_flex {
   display: flex;
+  width: 72vw;
+}
+
+.size_title {
+  display: inline-block;
+  width: 6vw;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.rentForm {
+  margin-left: 30px;
+}
+
+.value {
+  font-size: 1.2rem;
+
+  font-weight: medium;
+}
+
+.sub_value {
+  font-family: "Noto Sans KR", sans-serif;
+  margin-left: 15px;
+  font-size: 0.7rem;
+  color: #979797;
 }
