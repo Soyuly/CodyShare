@@ -66,7 +66,13 @@
       </div>
       
 
+      {% if renting == 1 %}
+      <button type="submit" class="sub" disabled style="opacity: 0.3;">예약중</button>
+      {% elif renting == 2 %}
+      <button type="submit" class="sub" disabled style="opacity: 0.3;">반납신청</button>
+      {% else %}
       <button type="submit" class="sub">예약하기</button>
+      {% endif %}
     </form>
   </div>
 </section>
