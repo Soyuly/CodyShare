@@ -1,31 +1,33 @@
-{% extends 'base.html' %} {% load static %} 
-{% block style %}
-<link rel="stylesheet" href="{% static 'css/message.css' %}">
-{% endblock %}
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block style %}
+<link rel="stylesheet" href="{% static 'css/message.css' %}" />
+{% endblock %} {% block content %}
 <div class="container">
   <div class="design-line--top"></div>
-    <h1>쪽지</h1>
-    <form class="message-form"action="{% url 'message' post_id rid %}" method="POST">
-      {% csrf_token %}
-      <input class="message-form__input"type="text" name="content" />
-      <button class="message-form__submit" type="submit">전송</button>
-    </form>
-    <div class="message-box">
+  <h1>쪽지</h1>
+  <form
+    class="message-form"
+    action="{% url 'message' post_id rid %}"
+    method="POST"
+  >
+    {% csrf_token %}
+    <input class="message-form__input" type="text" name="content" />
+    <button class="message-form__submit" type="submit">전송</button>
+  </form>
+  <div class="message-box">
     {% for message in messages %}
     <!-- <script>
       console.log("{{message.recieve_id.id}}");
     </script> -->
     {% if message.send_id.id != request.user.id %}
-      <div>
-        <p class="message recieve">{{message.content}}</p>
-      </div>
-      {% endif %} {% endfor %} {% for message_send in messages_send %}
-      <div>
-        <p class="message send">{{message_send.content}}</p>
-      </div>
-      {% endfor %}
+    <div>
+      <p class="message recieve">{{message.content}}</p>
     </div>
-    <div class="design-line--bottom"></div>
+    {% endif %} {% endfor %} {% for message_send in messages_send %}
+    <div>
+      <p class="message send">{{message_send.content}}</p>
+    </div>
+    {% endfor %}
   </div>
-  {% endblock %}
+  <div class="design-line--bottom"></div>
+</div>
+{% endblock %}

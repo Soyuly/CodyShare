@@ -66,14 +66,15 @@
   </div>
 </section>
 <script type="text/javascript">
-  var filter = "win16|win32|win64|mac";
+  var filter = "win16|win32|win64";
 
-  // if (navigator.platform) {
-  //   if (0 > filter.indexOf(navigator.platform.toLowerCase())) {
-  //     alert("모바일");
-  //     window.location.href = "{% url 'mobile' %}";
-  //   }
-  // }
+  if (navigator.platform) {
+    if (0 > filter.indexOf(navigator.platform.toLowerCase())) {
+      alert("모바일로 접속 하였습니다.\n PC로 접속해주세요!");
+      window.location.href = "{% url 'mobile' %}";
+      location.replace("{% url 'mobile' %}");
+    }
+  }
 </script>
 
 {% endblock %}
