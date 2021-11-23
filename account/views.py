@@ -47,6 +47,7 @@ def signup_backend(request):
         account.gender = request.POST['gender']
         account.name = request.POST['name']
         account.address = request.POST['location']
+
         print('회원가입')
         if User.objects.filter(username=request.POST['id']).exists():
             error = 1

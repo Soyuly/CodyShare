@@ -50,7 +50,7 @@
         </div>
       </div>
       {% endfor %}
-      <div class="item_container_create">
+      <div class="item_container_create" onclick="location.href='{% url 'create' %}'">
         <button
           class="fas fa-plus fa-3x"
           style="background-color: inherit; border: none"
@@ -58,23 +58,18 @@
         ></button>
       </div>
     </article>
-
-    <div class="more">
-      MORE
-      <i class="fas fa-chevron-down"></i>
-    </div>
   </div>
 </section>
 <script type="text/javascript">
   var filter = "win16|win32|win64";
 
-  if (navigator.platform) {
-    if (0 > filter.indexOf(navigator.platform.toLowerCase())) {
-      alert("모바일로 접속 하였습니다.\n PC로 접속해주세요!");
-      window.location.href = "{% url 'mobile' %}";
-      location.replace("{% url 'mobile' %}");
-    }
-  }
+  // if (navigator.platform) {
+  //   if (0 > filter.indexOf(navigator.platform.toLowerCase())) {
+  //     alert("모바일로 접속 하였습니다.\n PC로 접속해주세요!");
+  //     window.location.href = "{% url 'mobile' %}";
+  //     location.replace("{% url 'mobile' %}");
+  //   }
+  // }
 </script>
 
 {% endblock %}

@@ -26,7 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.main, name="main_logout"),
     path('main/<str:user_id>', views.main_login, name='main'),
-
+    path('apply/<str:apply_mem>', views.apply, name='apply'),
     path('mypage', views.mypage, name="mypage"),
     path('rent', views.rent, name="rent"),
     

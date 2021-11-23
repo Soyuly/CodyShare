@@ -25,7 +25,7 @@ header .logo {
   color: white;
   text-shadow: 0px 3px 1px rgba(0, 0, 0, 0.2);
   text-align: center;
-  line-height: 55px;
+  /* line-height: 55px; */
 }
 
 header .account {
@@ -45,4 +45,19 @@ header .account {
 .link {
   text-decoration: none;
   color: inherit;
+}
+
+
+footer {
+  margin-top: 10em;
+  margin-bottom: 3em;
+  margin-left: 18em;
+  margin-right: 18em;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 0.938rem;
+  color: #c4c4c4;
+}
+
+footer .footer_info {
+  margin-bottom: 5px;
 }
