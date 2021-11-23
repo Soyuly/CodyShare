@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% load static %} {% block style %}
 <link rel="stylesheet" href="{% static 'css/create.css' %}" />
+<script src="{% static 'js/create.js' %}" defer></script>
 {% endblock %} {% block content %}
 <form
   method="post"
@@ -86,9 +87,10 @@
       <div class="cal">
         <input type="date" name="end" id="dateofbirth" />
       </div>
-      <button type="submit" class="sub">글 올리기</button>
+      <button type="submit" class="sub form__submit">글 올리기</button>
     </div>
   </section>
 </form>
+
 
 {% endblock %}
