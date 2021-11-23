@@ -128,8 +128,18 @@ def message(request, rid, post_id):
     messages_send = Message.objects.filter(post_id = post).filter(send_id = me)
     if request.method == "POST":
         message = Message()
+        target = request.POST.get('target')
+        print(request.user.id)
+        print(rid)
+        if(request.user.id == rid):
+            error = 1
+            return render(request,'message.html',{'rid':rid,'post_id':post_id,'messages':messages, 'messages_send':messages_send, 'error': error})
+        if(target!="판매자"):
+            message.recieve_id = Account.objects.get(nickname = target)
+        if(target == "판매자"): 
+            message.recieve_id = Account.objects.get(id = rid)
+        
         message.content = request.POST['content']
-        message.recieve_id = Account.objects.get(id = rid)
         message.send_id = Account.objects.get(id = request.user.id);
         message.post_id = Post.objects.get(id = post_id)
         message.save()

@@ -19,3 +19,22 @@ $("input, select").change(function(){
         $(".form__submit").attr("disabled", false);
     }
 });
+
+
+
+
+const checkPwd = () =>{
+    let pwd = document.querySelector("#password_check").value;
+    let realpwd = document.querySelector("#password").value;
+
+    console.log(realpwd);
+
+    if (pwd != realpwd){
+        alert("입력하신 비밀번호와 일치하지 않습니다. ");
+        console.log(pwd);
+        document.querySelector("#password").value = null;
+        document.querySelector("#password_check").value = null;
+        console.log(realpwd);
+        document.querySelector("#password").focus();
+    }
+}
