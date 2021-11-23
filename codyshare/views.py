@@ -1,3 +1,4 @@
+from typing import Type
 from django.core.checks import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -7,6 +8,7 @@ from django.contrib import auth
 import json
 from django.http import JsonResponse
 from .models import Post, Like,Reservation, Message
+from datetime import date, datetime
 
 
 # Create your views here.
@@ -35,12 +37,13 @@ def main_login(request, user_id):
 def mypage(request):
     user = request.user
     user_obj = Account.objects.get(id=user.id)
-    sell_posts = Post.objects.filter(user_id=user.id)
-    rent_posts=Reservation.objects.filter(buyer_id=user_obj)
+    sell_posts = Post.objects.filter(user_id=user.id) #내가 쓴 글
+    rent_posts=Reservation.objects.filter(buyer_id=user_obj) #내가 예약/신청한 게시물 가져오기
     arr_sell=[]
     arr_confirm=[]
+    #내가 쓴 판매 게시물 가져오기
     for sell_obj in sell_posts:
-        get_post=Reservation.objects.get(post_id=sell_obj.id)
+        get_post=Reservation.objects.get(post_id=sell_obj.id) #내가 쓴 게시물에 대한 예약 신청 가져오기
         if(get_post.state==0):
             arr_sell.append(get_post.buyer_id.nickname)
     for sell_obj in sell_posts:
@@ -50,13 +53,16 @@ def mypage(request):
     likes = Like.objects.all()
     likes = likes.filter(user_id = user_obj)
     print(likes)
+
+    #대여 중
+    
     return render(request, 'mypage.html', { 'user' : user_obj, 'likes' : likes, 'sell_posts' : sell_posts  ,'rent_posts':rent_posts,'arr_sell':arr_sell,'arr_confirm':arr_confirm })
 
 
 def create(request):
     return render(request,'create.html')
 
-def detail(request,post_id):
+def detail(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     like = request.GET.get("like")
     
@@ -78,10 +84,29 @@ def detail(request,post_id):
             like.user_id = user_id
             like.post = post
             like.save()
-           
-            
         return redirect('/detail/' + str(post_id))
-    return render(request,'detail.html', {'post':post, 'already':already})
+
+    # 대여중 구현
+    rent_posts = Reservation.objects.filter(post_id = post).filter(state = 1) #해당 글에 대한 예약 모두 가져옴
+    if(rent_posts.exists()):
+        for rent_post in rent_posts:
+            print("현재 유저:", request.user, rent_post.buyer_id.user)
+            print("대여 신청 기간", rent_post.rent_start, rent_post.rent_end)
+            # 만약 rent_post 중 승인 상태이고 오늘 대여 기간과 오늘이 겹친다면 대여중으로 표시
+            today = datetime.today()
+            if (rent_post.rent_start < today.strftime("%Y-%m-%d") < rent_post.rent_end):
+                # 대여 중인데 로그인한 유저가 대여한 유저라면
+                if(rent_post.buyer_id.user == request.user):
+                    renting = 2
+                # 아니라면 그냥 대여중 띄우고 submit disabled
+                else:
+                    renting = 1
+                return render(request,'detail.html', {'post':post, 'already':already, 'renting': renting})
+
+    #반납 구현
+
+
+    return render(request,'detail.html', {'post':post, 'already':already })
 
 def create_backend(request):
     user = request.user
@@ -154,7 +179,7 @@ def apply(request,apply_mem):
     buyer = Account.objects.get(nickname = apply_mem)
     get_post=Reservation.objects.get(buyer_id=buyer)
     if get_post.state==0:
-        get_post.state=1
+        get_post.state=1 #1은 승인
     get_post.save()
 
     return redirect('/mypage')
