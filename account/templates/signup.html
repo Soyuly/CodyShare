@@ -62,17 +62,21 @@
       <h5 class="form__title">생년월일</h5>
       <input class="form__input form__input-date" type="date" name="birth" />
     </div>
-    <input type="text" value="{{located}}" hidden />
+    <input type="text" value="{{located}}" name="address" hidden />
+    <script>const locate=document.getElementsByName('located');
+    console.log(locate);</script>
     <div class="form__box">
+      
       <input
         class="form__submit"
         type="submit"
         id="login-submit"
         value="회원가입"
       />
+    </form>
       <button class="kakao-login">카카오 회원가입</button>
     </div>
-  </form>
+  
   <div class="design-line--bottom"></div>
 </div>
 {% endblock %}

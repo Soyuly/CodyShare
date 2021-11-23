@@ -1,3 +1,24 @@
+
+.cal{
+  display: inline;
+  margin-left: 3rem;
+}
+.cal input[type="date"] {
+  background:transparent url(../img/cal.png)  97% 50% no-repeat ;
+  border: none;
+  font-weight: 700;
+  text-align: center;
+}
+.cal input[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+.cal input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+
+
+
 .background_img {
   position: absolute;
   width: 100%;
