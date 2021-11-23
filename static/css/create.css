@@ -16,7 +16,7 @@ section {
 section .content {
     margin-left: 15rem;
     width: 60rem;
-    height: 50rem;
+    height: 53rem;
     padding: 26px 0px 26px 22px;
     position: relative;
     margin-top: 1em;
@@ -81,6 +81,7 @@ section .content::after {
  width: 50rem;
  height: 2.5rem;
  box-shadow: 3px 3px 10px #cfcfcf;
+ padding: 0 1rem;
 }
 .detail{
     border-radius: 5px;
@@ -91,6 +92,8 @@ section .content::after {
     height: 10rem;
     resize: none;
     box-shadow: 3px 3px 10px #cfcfcf;
+    padding: 1rem 1rem;
+
 }
 .content p{
     font-weight: bold;
@@ -148,6 +151,7 @@ select{
     background-color: transparent;
     margin-left: 4rem;
     text-align: center;
+    padding: 0.5rem;
 }
 .cal{
     display: inline;
@@ -176,6 +180,12 @@ select{
     width: 150px;
     height: 50px;
 }
+
+.sub:disabled{
+  opacity: 30%;
+}
+
+
 footer {
     margin-top: 10em;
     margin-bottom: 3em;
