@@ -53,6 +53,9 @@ def mypage(request):
     likes = Like.objects.all()
     likes = likes.filter(user_id = user_obj)
     print(likes)
+
+    #대여 중
+    
     return render(request, 'mypage.html', { 'user' : user_obj, 'likes' : likes, 'sell_posts' : sell_posts  ,'rent_posts':rent_posts,'arr_sell':arr_sell,'arr_confirm':arr_confirm })
 
 
@@ -101,7 +104,7 @@ def detail(request, post_id):
                 return render(request,'detail.html', {'post':post, 'already':already, 'renting': renting})
 
     #반납 구현
-    
+
 
     return render(request,'detail.html', {'post':post, 'already':already })
 
