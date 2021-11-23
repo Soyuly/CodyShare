@@ -98,7 +98,7 @@
   margin: 1rem 0 1rem 4%;
 }
 
-.form__submit:hover,
+.form__submit:enabled:hover,
 .kakao-login:hover {
   border: 1px solid black;
 }
@@ -126,6 +126,8 @@
   border-bottom: 5px solid #b1b1b1;
   border-right: 5px solid #b1b1b1;
 }
+
+/* 프로필 이미지부분 css */
 
 .upload {
   width: 180px;
