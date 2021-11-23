@@ -18,8 +18,15 @@ def main(request):
 
 @login_required
 def main_login(request, user_id):
-    user = get_object_or_404(Account, pk=user_id)
     posts = Post.objects.all()
+    if request.method == "POST":
+        print("필터들어감")
+        gender = request.POST.get('gender','')
+        cloth = request.POST.get('cloth','')
+        word = request.POST.get('word','')
+        print(gender, cloth, word)
+        posts = posts.filter(gender__icontains = gender, cloth_type__icontains = cloth, title__icontains = word)
+    user = get_object_or_404(Account, pk=user_id)
     if request.user.is_authenticated:
         print('성공')
         return render(request, 'main.html', {'user': user, 'posts':posts}) 

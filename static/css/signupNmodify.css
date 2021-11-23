@@ -1,127 +1,160 @@
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
-*{
-    margin: 0;
-    padding: 0;
-    font-family: "Noto Sans KR", sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 .container {
-    width: 30%;
-    margin: 5rem auto;
+  width: 30%;
+  margin: 5rem auto;
 }
 
 .container__title {
-    font-weight: bold;
-    font-size: 32px;
-    text-align: center;
+  font-weight: bold;
+  font-size: 32px;
+  text-align: center;
 }
 
 /* 폼 부분 */
 .form__box {
-    margin: 1rem 0;
+  margin: 1rem 0;
 }
 
-
 .form__title {
-    font-size: 15px;
-    color: #B1B1B1;
-    padding: 0.7rem;
+  font-size: 15px;
+  color: #b1b1b1;
+  padding: 0.7rem;
 }
 
 .form__input {
-    width: 90%;
-    height: 35px;
-    background: #FFFFFF;
-    border: 1px solid white;
-    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    padding: 0 5%;
-    text-align: center;
+  width: 90%;
+  height: 35px;
+  background: #ffffff;
+  border: 1px solid white;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 0 5%;
+  text-align: center;
 }
-.form_addr{
+.form_addr {
+  width: 80%;
+  margin-right: 0%;
+  height: 35px;
+  background: #ffffff;
+  border: 1px solid white;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 0 5%;
+  text-align: center;
+}
+.form_btn {
+  display: inline;
+  padding: 0% 1%;
+  margin-right: 0%;
+  height: 35px;
+  background: #ffffff;
+  border: 1px solid white;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 1px;
 
-    width: 80%;
-    margin-right: 0%;
-    height: 35px;
-    background: #FFFFFF;
-    border: 1px solid white;
-    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    padding: 0 5%;
-    text-align: center;
+  text-align: center;
 }
-.form_btn{
-    display: inline;
-    padding: 0% 1%;
-    margin-right: 0%;
-    height: 35px;
-    background: #FFFFFF;
-    border: 1px solid white;
-    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
-    border-radius: 1px;
-
-    text-align: center;
-}
-.form__input-select{
-    width: 100%;
-    height: 35px;
-    border: 1px solid white;
-}
-
-.form__input-date{
-    padding-left: 15%;
-    width: 80%;
+.form__input-select {
+  width: 100%;
+  height: 35px;
+  border: 1px solid white;
 }
 
-.form__input:hover, .form__input:focus{
-    border: 1px solid black;
+.form__input-date {
+  padding-left: 15%;
+  width: 80%;
 }
 
-.form__submit, .kakao-login {
-    width: 45%;
-    font-size: 16px;
-    height: 40px;
-    border: 0 solid white;
-    border-radius: 10px;
-    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
-    font-weight: bold;
+.form__input:hover,
+.form__input:focus {
+  border: 1px solid black;
+}
+
+.form__submit,
+.kakao-login {
+  width: 45%;
+  font-size: 16px;
+  height: 40px;
+  border: 0 solid white;
+  border-radius: 10px;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
 }
 
 .form__submit {
-    background-color: white;
-    margin: 1rem 4% 1rem 0;
+  background-color: white;
+  margin: 1rem 4% 1rem 0;
 }
 
 .kakao-login {
-    background-color: #FEE500;
-    margin: 1rem 0 1rem 4%;
+  background-color: #fee500;
+  margin: 1rem 0 1rem 4%;
 }
 
-.form__submit:hover, .kakao-login:hover{
-    border: 1px solid black;
+.form__submit:hover,
+.kakao-login:hover {
+  border: 1px solid black;
 }
 
 .form__submit-modify {
-    margin: 1rem calc(55% / 2);
+  margin: 1rem calc(55% / 2);
 }
 
 /* 디자인선 */
 .design-line--top {
-    position: relative;
-    left: -2rem;
-    width: 30px;
-    height: 30px;
-    border-top: 5px solid black;
-    border-left: 5px solid black;
+  position: relative;
+  left: -2rem;
+  width: 30px;
+  height: 30px;
+  border-top: 5px solid black;
+  border-left: 5px solid black;
 }
-  
+
 .design-line--bottom {
-    position: relative;
-    left: 2rem;
-    float: right;
-    width: 30px;
-    height: 30px;
-    border-bottom: 5px solid #b1b1b1;
-    border-right: 5px solid #b1b1b1;
+  position: relative;
+  left: 2rem;
+  float: right;
+  width: 30px;
+  height: 30px;
+  border-bottom: 5px solid #b1b1b1;
+  border-right: 5px solid #b1b1b1;
+}
+
+.upload {
+  width: 180px;
+  height: 180px;
+  margin-left: 60px;
+  -webkit-appearance: none; /* 네이티브 외형 감추기 */
+  -moz-appearance: none;
+  appearance: none;
+  margin-left: 20px;
+}
+
+input[type="file"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.profile_photo {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 90%;
+  object-fit: cover;
+}
+
+.form_image_box {
+  text-align: center;
 }
