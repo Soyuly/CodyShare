@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 import os, requests
+
 # Create your views here.
 
 
@@ -37,6 +38,7 @@ def signup(request):
 
 
 def signup_backend(request):
+
     if request.method  == 'POST':
         account = Account()
         account.photo = request.FILES['photo']
@@ -44,7 +46,7 @@ def signup_backend(request):
         account.birth = request.POST['birth']
         account.gender = request.POST['gender']
         account.name = request.POST['name']
-        account.address = "진주시"
+        account.address = request.POST['location']
         print('회원가입')
         if User.objects.filter(username=request.POST['id']).exists():
             error = 1
@@ -94,6 +96,12 @@ def mapvalue(request):
     if request.method == "POST":
         located=request.POST['address']
     return render(request,'signup.html',{'located':located})
+
+def mapvalue_kakao(request):
+    print("값",request.POST['address'])
+    if request.method == "POST":
+        located=request.POST['address']
+    return redirect('/kakao')
 
 class KakaoException:
     pass

@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% load static %} {% block style %}
 <link rel="stylesheet" href="{% static 'css/signupNmodify.css' %}" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="{% static 'js/signup.js' %}" defer></script>
 {% endblock %} {% block content %}
 <div class="container">
@@ -62,7 +63,7 @@
       <h5 class="form__title">생년월일</h5>
       <input class="form__input form__input-date" type="date" name="birth" />
     </div>
-    <input type="text" value="{{located}}" hidden />
+    <input type="text" id="location" name="location" value="" hidden />
     <div class="form__box">
       <input
         class="form__submit"
