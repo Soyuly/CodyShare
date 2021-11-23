@@ -151,7 +151,8 @@
 
     <article class="item_info">
       {% for post in sell_posts %}
-      <div class="item_container">
+      <div class="item_container-flip">
+      <div class="item_container front" data-sur="front">
         <img src="{{post.img.url}}" />
         <div class="info">
           <div class="info_title">
@@ -181,6 +182,10 @@
           </div>
         </div>
       </div>
+      <div class="item_container back">
+        <button class="lend_btn">대여 정보</button>
+      </div>
+    </div>
       {% endfor %}
 
       <!--modal-->
@@ -230,6 +235,8 @@
     </article>
   </div>
 </section>
+
+
 <script>
   // fiexd 네브바 코드
   $(".middle_horizon").hide();
@@ -262,4 +269,5 @@
     $(".popup").fadeOut();
   };
 </script>
+<script src="{% static 'js/animation.js' %}"></script>
 {% endblock %}

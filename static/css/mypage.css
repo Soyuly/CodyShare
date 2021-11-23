@@ -196,7 +196,7 @@ section .item_info .item_container {
   border-radius: 10px;
   box-shadow: 15px 15px 40px 0px rgba(0, 0, 0, 0.07);
   margin-bottom: 100px;
-  z-index: 2;
+  z-index: 1;
 }
 
 section .item_info .item_container img {
@@ -451,4 +451,27 @@ footer .footer_info {
 .popup .cancel:hover{
   background-color: #4273D1;
   color: white;
+}
+
+/* 카드 뒤집기 js */
+
+.item_container-flip{
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+.front, .back {
+
+}
+
+.front {
+  backface-visibility: hidden;
+}
+
+section .item_info .item_container.back {
+  background-color: black;
+  position: absolute;
+  top: 0;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+  z-index: 100;
 }
