@@ -50,6 +50,14 @@ def mypage(request):
     user_obj = Account.objects.get(id=user.id) #현재 사용자 user정보
     sell_posts = Post.objects.filter(user_id=user.id) #사용자가 쓴 판매게시글
     rent_posts=Reservation.objects.filter(buyer_id=user_obj) # reservation row들 중에 사용자가 판매한 게시글이 예약신청된 row
+    arr_rent_posts=[]
+    for rent_post in rent_posts:
+        print("===========================")
+        print(rent_post.state)
+        if(rent_post.state==1):
+            print("if===========================")
+            print(rent_post.state)
+            arr_rent_posts.append(rent_post)
     arr_sell=[] #신청한 멤버들의 닉네임을 받음
     arr_confirm=[] #승인된 멤버들의 닉네임을 받음
     for sell_obj in sell_posts:
@@ -65,7 +73,7 @@ def mypage(request):
     likes = Like.objects.all()
     likes = likes.filter(user_id = user_obj)
     print(likes)
-    return render(request, 'mypage.html', { 'user' : user_obj, 'likes' : likes, 'sell_posts' : sell_posts  ,'rent_posts':rent_posts,'arr_sell':arr_sell,'arr_confirm':arr_confirm })
+    return render(request, 'mypage.html', { 'user' : user_obj, 'likes' : likes, 'sell_posts' : sell_posts  ,'rent_posts':rent_posts,'arr_sell':arr_sell,'arr_confirm':arr_confirm,'arr_rent_posts':arr_rent_posts })
 
 
 def create(request):
@@ -165,9 +173,8 @@ def apply(request,apply_mem):
 
     return redirect('/mypage')
 
-def return_item(request,apply_mem):
-    buyer = Account.objects.get(nickname = apply_mem)
-    get_posts=Reservation.objects.filter(buyer_id=buyer)
+def return_item(request,return_item):
+    get_posts=Reservation.objects.filter(id = return_item)
     for get_post in get_posts:
         if get_post.state==1:
             get_post.state=2            

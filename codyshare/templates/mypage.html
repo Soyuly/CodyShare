@@ -116,35 +116,41 @@
   </div>
 
   <!--대여 목록-->
-  <div class="background_bottom">
-    <div class="like_title" id="lendcontents">대여 목록</div>
-
-    <article class="item_info">
-      {% for rent_posts in rent_posts %}
-      <div
-        class="item_container"
-        onclick="location.href='{% url 'detail' rent_posts.post_id %}'"
-      >
-        <img src="{{rent_posts.post_id.img.url}}" />
-        <div class="info">
-          <div class="info_title">
-            <span class="title">{{ rent_posts.post_id.title }}</span>
-            <span class="name">{{ rent_posts.post_id.user_id.nickname }}</span>
+  
+    <div class="background_bottom">
+      <div class="like_title" id="lendcontents">대여 목록</div>
+  
+      <article class="item_info">
+        {% for rent_posts in arr_rent_posts %}
+        
+        <form action="{% url 'return_item' rent_posts.id %}" method="post">
+          {% csrf_token %}
+          <div
+            class="item_container"
+            onclick="location.href='{% url 'detail' rent_posts.post_id %}'"
+          >
+            <img src="{{rent_posts.post_id.img.url}}" />
+            <div class="info">
+              <div class="info_title">
+                <span class="title">{{ rent_posts.post_id.title }}</span>
+                <span class="name">{{ rent_posts.post_id.user_id.nickname }}</span>
+              </div>
+              <div class="day">{{ rent_posts.post_id.pub_date }}</div>
+              <div class="contents_sell">{{ rent_posts.post_id.sum_content }}</div>
+    
+              <div class="lend_btns">
+                <button type="submit"class="lend_btn">반납하기</button>
+              </div>
+            </div>
           </div>
-          <div class="day">{{ rent_posts.post_id.pub_date }}</div>
-          <div class="contents_sell">{{ rent_posts.post_id.sum_content }}</div>
+        </form>
+        
+        {% endfor %}
+        
+      </article>
+    </div>
 
-          <div class="lend_btns">
-            <button class="lend_btn">연장하기</button>
-            <button class="lend_btn">반납하기</button>
-          </div>
-        </div>
-      </div>
-      
-      {% endfor %}
-      
-    </article>
-  </div>
+  
 
   <!--판매 관리-->
   <div class="background_bottom" id="sellcontents">
