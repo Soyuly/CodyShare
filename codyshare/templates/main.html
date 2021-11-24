@@ -54,12 +54,12 @@
           class="item_container back"
           onclick="location.href='{% url 'detail' post.id %}'"
         >
-          
+        
 
           <div class="info" style="padding-left: 0 10%;">
             
             <div class="name" style="padding-top: 2rem;">판매자 정보</div>
-            <img src="{{ user.photo.url }}" class="profile_image" />
+            <img src="{{ post.user_id.photo.url }}" class="profile_image" />
             <div class="title">{{post.user_id.nickname}}</div>
             <div class="day">{{post.user_id.address}}</div>
             <div class="contents" style="height:30%;">이미 예약된 기간</div>
