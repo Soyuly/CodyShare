@@ -462,6 +462,11 @@ footer .footer_info {
   transform-style: preserve-3d;
 }
 
+.front{
+  backface-visibility: hidden;
+
+}
+
 section .item_info .item_container.back {
   background-color: rgb(255, 255, 255);
   position: absolute;
@@ -473,4 +478,25 @@ section .item_info .item_container.back {
 
 .item_container.back .wrapper {
   padding: 1rem;
+}
+
+.wrapper li{
+  font-weight: bold;
+  display: inline-block;
+  width: 40%;
+  margin: 0.7rem 0;
+}
+
+.wrapper a{
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 0.2rem;
+  margin: 0.1rem;
+  text-decoration: none;
+  color: grey;
+  width: 
+}
+
+.wrapper a:hover{
+  color: black;
 }
