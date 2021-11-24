@@ -461,19 +461,16 @@ footer .footer_info {
   transition: transform 1s;
   transform-style: preserve-3d;
 }
-.front, .back {
-
-}
-
-.front {
-  backface-visibility: hidden;
-}
 
 section .item_info .item_container.back {
-  background-color: black;
+  background-color: rgb(255, 255, 255);
   position: absolute;
   top: 0;
   backface-visibility: hidden;
   transform: rotateY(180deg);
   z-index: 100;
+}
+
+.item_container.back .wrapper {
+  padding: 1rem;
 }

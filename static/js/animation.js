@@ -1,16 +1,3 @@
-// let card = document.querySelector('.lend_btn');
-//     card.addEventListener('click', click);
-
-
-// function click(event) {
-//     console.log("실행");
-//   let elem = event.currentTarget;
-//   if (elem.style.transform == "rotateY(180deg)") {
-//             elem.style.transform = "rotateY(0deg)";
-//         } else {
-//             elem.style.transform = "rotateY(180deg)";
-//         }
-//     }
 
 $(".lend_btn").click(function(event){
     console.log("뒤집기 실행");

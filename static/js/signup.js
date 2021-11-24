@@ -38,3 +38,34 @@ const checkPwd = () =>{
         document.querySelector("#password").focus();
     }
 }
+
+(function location(){
+    navigator.geolocation.getCurrentPosition(
+    function(position) {
+    console.log("위도 : " + position.coords.latitude);
+    console.log("경도 : " + position.coords.longitude);
+    }, 
+    );
+                
+    })();
+
+const getAddr = () => {
+    navigator.geolocation.getCurrentPosition(function(position){
+        $.ajax({
+            url : 'https://dapi.kakao.com/v2/local/geo/coord2address.json?x=' + position.coords.longitude +'&y=' + position.coords.latitude,
+            type : 'GET',
+            headers : {
+              'Authorization' : 'KakaoAK eebc5ddba4a23626be8715744818895c'
+            },
+            success : function(data) {
+              console.log(data['documents'][0]['address']['address_name']);
+              
+              document.querySelector("#location").value = data['documents'][0]['address']['address_name'];
+              },
+            error : function(e) {
+              console.log(e);   
+            }
+          })})};
+
+          getAddr();
+
