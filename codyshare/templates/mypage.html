@@ -184,7 +184,8 @@
         </div>
       </div>
       <div class="item_container back">
-                <p>신청한 사람 목록</p>
+        <div class="wrapper">
+        <p style="font-weight: bold;">신청한 사람 목록</p>
         <ul>
           {% for arr_sell in arr_sell %}
       
@@ -195,7 +196,7 @@
 
         </ul>
         
-        <p>승인된 사람</p>
+        <p style="font-weight: bold;">승인된 사람</p>
         <ul>
           {% for arr_confirm in arr_confirm %}
       
@@ -204,7 +205,8 @@
         
           {% endfor%}
         </ul>
-        <button class="lend_btn">대여 정보</button>
+      </div>
+        <button class="lend_btn" style="float: right; margin-right: 1rem;">돌아가기</button>
       </div>
     </div>
       {% endfor %}

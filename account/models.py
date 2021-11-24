@@ -9,7 +9,7 @@ class Account(models.Model):
     nickname = models.CharField(max_length=100)
     name = models.CharField(max_length=10)
     address = models.TextField()
-    birth = models.DateField()
+    birth = models.CharField(max_length=15)
     gender = models.CharField(max_length=5)
     # def str(self):
     #     return self.user.id
