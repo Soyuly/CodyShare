@@ -237,3 +237,25 @@ input:focus {
   object-fit: cover;
   margin-left: 18%;
 }
+
+
+
+/* 뒤집기 */
+.item_container-flip{
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.front{
+  backface-visibility: hidden;
+
+}
+
+section article .item_container.back {
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+  z-index: 100;
+}
