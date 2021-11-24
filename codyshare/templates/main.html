@@ -36,9 +36,9 @@
   <div class="background_bottom">
     <article>
       {% for post in posts %}
-      <div>
+      <div class="item_container-flip">
           <div
-          class="item_container"
+          class="item_container front"
           onclick="location.href='{% url 'detail' post.id %}'"
         >
           <img class="img1"src="{{post.img.url}}" />
@@ -51,7 +51,7 @@
           </div>
         </div>
         <div
-          class="item_container"
+          class="item_container back"
           onclick="location.href='{% url 'detail' post.id %}'"
         >
           
@@ -62,9 +62,9 @@
             <img src="{{ user.photo.url }}" class="profile_image" />
             <div class="title">{{post.user_id.nickname}}</div>
             <div class="day">{{post.user_id.address}}</div>
-            <div class="contents">이미 예약된 기간</div>
+            <div class="contents" style="height:30%;">이미 예약된 기간</div>
             {% for arr_confirm_day in arr_confirm_days %}
-              <div class="">{{arr_confirm_day}}</div>
+            <div class="" style="margin: 0;">{{arr_confirm_day}}</div>
             {% endfor %}
           </div>
 
@@ -95,6 +95,19 @@
   //     location.replace("{% url 'mobile' %}");
   //   }
   // }
+
+  // 카드뒤집기 js
+  $(".item_container-flip").mouseover(function(event){
+    let target = $(this).closest(".item_container-flip");
+      target.css({'transform':'rotateY(180deg)'});
+});
+
+$(".item_container-flip").mouseleave(function(event){
+    let target = $(this).closest(".item_container-flip");
+    target.css({'transform':'rotateY(0deg)'});
+});
 </script>
+
+
 
 {% endblock %}
