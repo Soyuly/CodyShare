@@ -37,19 +37,38 @@
     <article>
       {% for post in posts %}
       <div>
-        <div
-        class="item_container"
-        onclick="location.href='{% url 'detail' post.id %}'"
-      >
-        <img src="{{post.img.url}}" />
+          <div
+          class="item_container"
+          onclick="location.href='{% url 'detail' post.id %}'"
+        >
+          <img class="img1"src="{{post.img.url}}" />
 
-        <div class="info">
-          <div class="name">{{post.user.nickname}}</div>
-          <div class="title">{{post.title}}</div>
-          <div class="day">{{post.start}}</div>
-          <div class="contents">{{post.content}}</div>
+          <div class="info">
+            <div class="name">{{post.user_id.nickname}}</div>
+            <div class="title">{{post.title}}</div>
+            <div class="day">{{post.start}}</div>
+            <div class="contents">{{post.title}}</div>
+          </div>
         </div>
-      </div>
+        <div
+          class="item_container"
+          onclick="location.href='{% url 'detail' post.id %}'"
+        >
+          
+
+          <div class="info" style="padding-left: 0 10%;">
+            
+            <div class="name" style="padding-top: 2rem;">판매자 정보</div>
+            <img src="{{ user.photo.url }}" class="profile_image" />
+            <div class="title">{{post.user_id.nickname}}</div>
+            <div class="day">{{post.user_id.address}}</div>
+            <div class="contents">이미 예약된 기간</div>
+            {% for arr_confirm_day in arr_confirm_days %}
+              <div class="">{{arr_confirm_day}}</div>
+            {% endfor %}
+          </div>
+
+        </div>
       </div>
      
       {% endfor %}

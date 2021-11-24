@@ -16,12 +16,25 @@ from datetime import date, datetime
 
 
 def main(request):
-   posts = Post.objects.all()
-   return render(request, 'main.html', {'posts':posts}) 
+    posts = Post.objects.all()
+    return render(request, 'main.html', {'posts':posts}) 
 
 @login_required
 def main_login(request, user_id):
     posts = Post.objects.all()
+    arr_confirm_days=[] #승인된 멤버들의 닉네임을 받음
+    for post in posts:
+        get_posts=Reservation.objects.filter(post_id=post.id)
+        print("===========================")
+        print(get_posts)
+        print("===========================")
+        for get_post in get_posts:
+            if(get_post.state==1):
+                arr_confirm_day=get_post.rent_start+"  ~  "+get_post.rent_end
+                print("===========================")
+                print(arr_confirm_day)
+                print("===========================")
+                arr_confirm_days.append(arr_confirm_day) 
     if request.method == "POST":
         print("필터들어감")
         gender = request.POST.get('gender','')
@@ -32,7 +45,7 @@ def main_login(request, user_id):
     user = get_object_or_404(Account, pk=user_id)
     if request.user.is_authenticated:
         print('성공')
-        return render(request, 'main.html', {'user': user, 'posts':posts}) 
+        return render(request, 'main.html', {'user': user, 'posts':posts,'arr_confirm_days':arr_confirm_days}) 
 
 
 def mypage(request):
@@ -181,3 +194,12 @@ def apply(request,apply_mem):
 
     return redirect('/mypage')
 
+def return_item(request,apply_mem):
+    buyer = Account.objects.get(nickname = apply_mem)
+    get_posts=Reservation.objects.filter(buyer_id=buyer)
+    for get_post in get_posts:
+        if get_post.state==1:
+            get_post.state=2            
+        get_post.save()
+
+    return redirect('/mypage')
