@@ -226,7 +226,7 @@ footer .footer_info {
 
 .size_title {
   display: inline-block;
-  width: 6vw;
+  width: 100px;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: bold;
   font-size: 0.9rem;

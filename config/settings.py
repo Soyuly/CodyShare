@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'codyshare.apps.CodyshareConfig',
     'account.apps.AccountConfig',
-    'sslserver',
 ]
 
 MIDDLEWARE = [
