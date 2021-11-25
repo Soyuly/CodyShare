@@ -18,11 +18,15 @@
     <p class="categroy_type">{{post.cloth_type}}</p>
     <p class="title">{{post.title}}</p>
   
+    {% if request.user.is_authenticated %}
       <button value="message" name="message" class="img_dir"style="margin-right:10px;background-color:inherit;border:none;" onclick="messsageBtn();"
       ><img src="/static/img/direct.png" alt="채팅"
     /></button>
-
-    
+    {% else %}
+    <button value="message" name="message" class="img_dir"style="margin-right:10px;background-color:inherit;border:none;" onclick="alert('로그인이 필요합니다!');location.href='{% url 'login' %}'"
+    ><img src="/static/img/direct.png" alt="채팅"
+  /></button>
+   {% endif %}
     {% if already %}
     <form action="" method="get">
       <button class="fas fa-heart img_like" value="like" name="like"></button>
