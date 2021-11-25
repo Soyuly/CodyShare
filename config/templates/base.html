@@ -32,10 +32,10 @@
       <div class="account">
         {% if request.user.is_authenticated %}
         <a class="link" href="{% url 'logout_backend' %}"
-        >Logout&nbsp;</a
+        >LOGOUT&nbsp;</a
       ></span
     >
-    <span><a class="link" href="{% url 'mypage' %}">MyPage</a></span>
+    <span><a class="link" href="{% url 'mypage' %}">MYPAGE</a></span>
 
         {% else %}
         <span><a class="link" href="{% url 'login' %}">LOGIN&nbsp;</a></span>
