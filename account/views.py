@@ -179,4 +179,3 @@ def kakao_callback(request):
         error = 1
         return render(request, 'login.html', {'error': error})
     
-    

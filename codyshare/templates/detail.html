@@ -17,13 +17,12 @@
     <p class="categroy_gender">{{post.gender}}</p>
     <p class="categroy_type">{{post.cloth_type}}</p>
     <p class="title">{{post.title}}</p>
-    <form action="" method="get">
-      <button value="message" name="message" class="img_dir"style="margin-right:10px;background-color:inherit;border:none;  " href=""
+  
+      <button value="message" name="message" class="img_dir"style="margin-right:10px;background-color:inherit;border:none;" onclick="messsageBtn();"
       ><img src="/static/img/direct.png" alt="채팅"
     /></button>
 
-    </form>
-
+    
     {% if already %}
     <form action="" method="get">
       <button class="fas fa-heart img_like" value="like" name="like"></button>
@@ -73,8 +72,15 @@
       {% else %}
       <button type="submit" class="sub">예약하기</button>
       {% endif %}
+
+     
     </form>
   </div>
+  <script>
+    const messsageBtn = () => {
+      window.location.href="{% url 'chat' post.id %}";
+    }
+  </script>
 </section>
 
 {% endblock %}

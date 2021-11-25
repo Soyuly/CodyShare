@@ -8,7 +8,7 @@ from django.contrib import auth
 import json, requests, os
 from django.http import JsonResponse
 from .models import Post, Like,Reservation, Message
-
+from django.utils.safestring import mark_safe
 from datetime import date, datetime
 
 
@@ -209,3 +209,12 @@ def return_item(request,return_item):
         get_post.save()
 
     return redirect('/mypage')
+
+def chat_index(request):
+        return render(request, 'chat.html')
+
+
+def chat(request, room_name):
+        return render(request, 'chat.html', {
+        'room_name_json': mark_safe(json.dumps(room_name))
+    })
