@@ -37,7 +37,9 @@ urlpatterns = [
     path('create_backend/',
          views.create_backend, name='create_backend'),    
     path('message/<str:post_id>/<str:rid>', views.message, name="message"),
-     path('mobile/', views.mobile, name='mobile'),
+    path('mobile/', views.mobile, name='mobile'),
+    path('chat', views.chat_index, name='chat_index'),
+    path('chat/<str:room_name>/', views.chat, name='chat'),
 ] 
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

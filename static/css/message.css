@@ -23,7 +23,7 @@
   border-radius: 5px;
   border: 1px solid white;
   margin-right: 1rem;
-  width: 70%;
+  width: 90%;
   height: 30px;
   padding: 0 1rem;
 }
@@ -41,7 +41,7 @@
   border-radius: 5px;
   padding: 0.5rem;
   color: rgb(164, 164, 164);
-  min-width: 20px;
+  min-width: 10px;
 }
 
 .message-form__submit:hover {
@@ -96,4 +96,22 @@
   width: 10%;
   height: 30px;
   padding: 0 1rem;
+}
+
+textarea {
+  border: 1px solid black;
+  resize: none;
+  width: 100%;
+}
+
+.recieve_div {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.send_div {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }

@@ -1,0 +1,76 @@
+{% extends 'base.html' %} {% load static %} {% block style %}
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="{% static 'css/message.css' %}" />
+{% endblock %} {% block content %}
+<div class="container">
+  <div class="design-line--top"></div>
+  <h1>채팅</h1>
+
+  <div style="display: flex">
+    <input
+      class="message-form__input"
+      type="text"
+      name="content"
+      id="chat-message-input"
+      placeholder="내용을 입력하세요."
+    />
+    <button class="message-form__submit" type="submit" id="chat-message-submit">
+      전송
+    </button>
+  </div>
+  <div class="message-box" id="message_div"></div>
+  <div class="design-line--bottom"></div>
+</div>
+<script>
+
+     let roomName = {{ room_name_json }};
+
+  let chatSocket = new WebSocket(
+      'ws://' + window.location.host +
+      '/ws/chat/' + roomName + '/');
+
+  chatSocket.onmessage = function(e) {
+      var data = JSON.parse(e.data);
+      let user_id = data['userid'];
+      var message = data['message'];
+      let userk = data['username'];
+      console.log(username + "입니다");
+      if( "{{request.user.id}}" == user_id ){
+
+        $('#message_div').after('<div class="send_div"> <p class="message recieve">' + message + '</p></div>');
+      }
+
+    else {
+      console.log("false")
+      $('#message_div').after('<div class="recieve_div"> <p class="message send">' + message + '</p><p style="margin-left:10px">' + username + '</p></div>');
+    }
+
+  };
+
+  chatSocket.onclose = function(e) {
+      console.error('Chat socket closed unexpectedly');
+  };
+
+  document.querySelector('#chat-message-input').focus();
+  document.querySelector('#chat-message-input').onkeyup = function(e) {
+      if (e.keyCode === 13) {  // enter, return
+          document.querySelector('#chat-message-submit').click();
+      }
+
+  };
+
+  document.querySelector('#chat-message-submit').onclick = function(e) {
+    userid = "{{request.user.id}}";
+    username = "{{request.user.username}}";
+      var messageInputDom = document.querySelector('#chat-message-input');
+      var message = messageInputDom.value;
+      chatSocket.send(JSON.stringify({
+          'message': message,
+          'userid' : userid,
+          'username' : username,
+      }));
+      console
+      messageInputDom.value = '';
+  };
+</script>
+{% endblock %}
