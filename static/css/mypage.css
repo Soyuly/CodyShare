@@ -47,14 +47,17 @@ section .introduce::after {
   margin-top: 45px;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 33px;
+  padding: 33px;
   width: 60vw;
-  height: 43vh;
+  /* height: 43vh; */
   box-shadow: 15px 15px 40px 0px rgba(0, 0, 0, 0.07);
+  justify-content: space-around;
 }
 
 .profile_card .profile_image {
-  margin-left: 20px;
+  /* margin-left: 20px; */
+  /* margin-bottom: 30px; */
+  max-width: 400px;
   width: 40%;
   height: 90%;
   border-radius: 20px;
@@ -64,6 +67,7 @@ section .introduce::after {
 .profile_card .profile_box {
   display: flex;
   flex-direction: column;
+  /* justify-content: space-around; */
 
   margin-left: 30px;
 }
@@ -91,8 +95,8 @@ section .introduce::after {
   flex-direction: column;
   margin-top: 15px;
   flex-wrap: wrap;
-  justify-content: space-between;
-  height: 33vh;
+  justify-content: space-around;
+  /* height: 33vh; */
 }
 
 .profile_card .profile_box .profile_detail .text_box{
@@ -180,8 +184,9 @@ section .introduce::after {
   font-size: 0.875rem;
   color: #c4c4c4;
   text-align: right;
-  margin-top: 10px;
+  margin-top: 20px;
   margin-right: 30px;
+  padding: 1rem 0;
 }
 
 /* 아이템 컨테이너 */
