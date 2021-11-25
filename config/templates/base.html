@@ -29,7 +29,9 @@
         <a class="link" href="{% url 'main_logout' %}">CS</a>
       </div>
       {% endif %}
+      <h1 class="mobile_logo">코디쉐어 로비</h1>
       <div class="account">
+        
         {% if request.user.is_authenticated %}
         <a class="link" href="{% url 'logout_backend' %}"
         >LOGOUT&nbsp;</a

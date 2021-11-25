@@ -2,11 +2,15 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 <link rel="stylesheet" href="{% static 'css/message.css' %}" />
 {% endblock %} {% block content %}
+<meta
+  name="viewport"
+  content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"
+/>
 <div class="container">
   <div class="design-line--top"></div>
   <h1>채팅</h1>
 
-  <div style="display: flex">
+  <div class="inputdiv" style="display: flex">
     <input
       class="message-form__input"
       type="text"

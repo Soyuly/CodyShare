@@ -17,7 +17,12 @@
 <section>
   <div class="introduce">마이페이지</div>
   <article class="profile_card">
+    {% if user.photo == false %}
     <img src="{{ user.photo.url }}" class="profile_image" />
+    {% else %}
+
+    <img src="{% static 'img/user.png' %}" class="profile_image" />
+    {% endif %}
     <div class="profile_box">
       <div class="profile_id">{{ user.nickname }}</div>
       <div class="profile_detail">
@@ -116,41 +121,42 @@
   </div>
 
   <!--대여 목록-->
-  
-    <div class="background_bottom">
-      <div class="like_title" id="lendcontents">대여 목록</div>
-  
-      <article class="item_info">
-        {% for rent_posts in arr_rent_posts %}
-        
-        <form action="{% url 'return_item' rent_posts.id %}" method="post">
-          {% csrf_token %}
-          <div
-            class="item_container"
-            onclick="location.href='{% url 'detail' rent_posts.post_id %}'"
-          >
-            <img src="{{rent_posts.post_id.img.url}}" />
-            <div class="info">
-              <div class="info_title">
-                <span class="title">{{ rent_posts.post_id.title }}</span>
-                <span class="name">{{ rent_posts.post_id.user_id.nickname }}</span>
-              </div>
-              <div class="day">{{ rent_posts.post_id.pub_date }}</div>
-              <div class="contents_sell">{{ rent_posts.post_id.sum_content }}</div>
-    
-              <div class="lend_btns">
-                <button type="submit"class="lend_btn">반납하기</button>
-              </div>
+
+  <div class="background_bottom">
+    <div class="like_title" id="lendcontents">대여 목록</div>
+
+    <article class="item_info">
+      {% for rent_posts in arr_rent_posts %}
+
+      <form action="{% url 'return_item' rent_posts.id %}" method="post">
+        {% csrf_token %}
+        <div
+          class="item_container"
+          onclick="location.href='{% url 'detail' rent_posts.post_id %}'"
+        >
+          <img src="{{rent_posts.post_id.img.url}}" />
+          <div class="info">
+            <div class="info_title">
+              <span class="title">{{ rent_posts.post_id.title }}</span>
+              <span class="name"
+                >{{ rent_posts.post_id.user_id.nickname }}</span
+              >
+            </div>
+            <div class="day">{{ rent_posts.post_id.pub_date }}</div>
+            <div class="contents_sell">
+              {{ rent_posts.post_id.sum_content }}
+            </div>
+
+            <div class="lend_btns">
+              <button type="submit" class="lend_btn">반납하기</button>
             </div>
           </div>
-        </form>
-        
-        {% endfor %}
-        
-      </article>
-    </div>
+        </div>
+      </form>
 
-  
+      {% endfor %}
+    </article>
+  </div>
 
   <!--판매 관리-->
   <div class="background_bottom" id="sellcontents">
@@ -159,62 +165,62 @@
     <article class="item_info">
       {% for post in sell_posts %}
       <div class="item_container-flip">
-      <div class="item_container front" data-sur="front">
-        <img src="{{post.img.url}}" />
-        <div class="info">
-          <div class="info_title">
-            <span
-              class="title"
-              onclick="location.href='{% url 'detail' post.id %}'"
-              >{{ post.title }}</span
-            >
-            <span class="name">{{ post.user_id.nickname }}</span>
-          </div>
-          <div class="day">{{ post.pub_date }}</div>
-          <div class="contents_sell">{{ post.sum_content }}</div>
+        <div class="item_container front" data-sur="front">
+          <img src="{{post.img.url}}" />
+          <div class="info">
+            <div class="info_title">
+              <span
+                class="title"
+                onclick="location.href='{% url 'detail' post.id %}'"
+                >{{ post.title }}</span
+              >
+              <span class="name">{{ post.user_id.nickname }}</span>
+            </div>
+            <div class="day">{{ post.pub_date }}</div>
+            <div class="contents_sell">{{ post.sum_content }}</div>
 
-          <div class="lend_btns">
-            <button class="lend_btn-text lend_btn">대여 기록</button>
-            <button class="lend_btn-icon lend_btn">
-              <i class="fas fa-edit"></i>
-            </button>
+            <div class="lend_btns">
+              <button class="lend_btn-text lend_btn">대여 기록</button>
+              <button class="lend_btn-icon lend_btn">
+                <i class="fas fa-edit"></i>
+              </button>
 
-            <button
-              class="lend_btn-icon lend_btn"
-              onclick="openPopup('rentalInfo');"
-            >
-              <i class="fas fa-trash-alt"></i>
-            </button>
-            <button class="lend_btn">대여 정보</button>
+              <button
+                class="lend_btn-icon lend_btn"
+                onclick="openPopup('rentalInfo');"
+              >
+                <i class="fas fa-trash-alt"></i>
+              </button>
+              <button class="lend_btn">대여 정보</button>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="item_container back">
-        <div class="wrapper">
-        <p style="font-weight: bold;">신청한 사람 목록</p>
-        <ul>
-          {% for arr_sell in arr_sell %}
-      
-            <li>{{arr_sell}}</li>
-            <a href="{% url 'apply' arr_sell %}">승인하기</a>
-        
-          {% endfor%}
+        <div class="item_container back">
+          <div class="wrapper">
+            <p style="font-weight: bold">신청한 사람 목록</p>
+            <ul>
+              {% for arr_sell in arr_sell %}
 
-        </ul>
-        
-        <p style="font-weight: bold;">승인된 사람</p>
-        <ul>
-          {% for arr_confirm in arr_confirm %}
-      
-            <li>{{arr_confirm}}</li>
+              <li>{{arr_sell}}</li>
+              <a href="{% url 'apply' arr_sell %}">승인하기</a>
 
-        
-          {% endfor%}
-        </ul>
+              {% endfor%}
+            </ul>
+
+            <p style="font-weight: bold">승인된 사람</p>
+            <ul>
+              {% for arr_confirm in arr_confirm %}
+
+              <li>{{arr_confirm}}</li>
+
+              {% endfor%}
+            </ul>
+          </div>
+          <button class="lend_btn" style="float: right; margin-right: 1rem">
+            돌아가기
+          </button>
+        </div>
       </div>
-        <button class="lend_btn" style="float: right; margin-right: 1rem;">돌아가기</button>
-      </div>
-    </div>
       {% endfor %}
 
       <!--modal-->
@@ -262,7 +268,6 @@
     </article>
   </div>
 </section>
-
 
 <script>
   // fiexd 네브바 코드
