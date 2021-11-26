@@ -37,40 +37,46 @@
     <article>
       {% for post in posts %}
       <div class="item_container-flip">
-          <div
+        <div
           class="item_container front"
-          onclick="location.href='{% url 'detail' post.id %}'"
+          
         >
-          <img class="img1"src="{{post.img.url}}" />
+          <img class="img1" src="{{post.img.url}}" />
 
           <div class="info">
-            <div class="name">{{post.user_id.nickname}}</div>
-            <div class="title">{{post.title}}</div>
+            <div class="name info__front-name">{{post.user_id.nickname}}</div>
+            <div class="info__seller-modal" hidden><p>판매자 정보 확인</p></div>
+            <div class="title" onclick="location.href='{% url 'detail' post.id %}'">{{post.title}}</div>
             <div class="day">{{post.start}}</div>
             <div class="contents">{{post.title}}</div>
           </div>
         </div>
         <div
-          class="item_container back"
-          onclick="location.href='{% url 'detail' post.id %}'"
+          class="item_container back""
         >
+
         
 
-          <div class="info" style="padding-left: 0 10%;">
+<!--           <div class="info" style="padding-left: 0 10%;">
             
             <div class="name" style="padding-top: 2rem;">판매자 정보</div>
-            <img src="{{ post.user_id.photo.url }}" class="profile_image" />
+            <img src="{{ post.user_id.photo.url }}" class="profile_image" /> -->
+
+          <div class="info" style="padding-left: 0 10%">
+            <button class="info__filp-cancel"><i class="fas fa-arrow-circle-left"></i></button>
+            <div class="name" style="padding-top: 2rem">판매자 정보</div>
+            <img src="{{ user.photo.url }}" class="profile_image" />
+
             <div class="title">{{post.user_id.nickname}}</div>
             <div class="day">{{post.user_id.address}}</div>
-            <div class="contents" style="height:30%;">이미 예약된 기간</div>
+            <div class="contents" style="height: 30%">이미 예약된 기간</div>
             {% for arr_confirm_day in arr_confirm_days %}
-            <div class="" style="margin: 0;">{{arr_confirm_day}}</div>
+            <div class="" style="margin: 0">{{arr_confirm_day}}</div>
             {% endfor %}
           </div>
-
         </div>
       </div>
-     
+
       {% endfor %}
       <div
         class="item_container_create"
@@ -86,28 +92,46 @@
   </div>
 </section>
 <script type="text/javascript">
-  var filter = "win16|win32|win64";
+  const isMobile = () => {
+    try {
+      document.createEvent("TouchEvent");
+      alert("모바일로 접속 하였습니다.\n PC로 접속해주세요!");
+      window.location.href = "{% url 'mobile' %}";
+      location.replace("{% url 'mobile' %}");
+    } catch (e) {
+      console.log("데스크톱");
+    }
+  };
 
-  // if (navigator.platform) {
-  //   if (0 > filter.indexOf(navigator.platform.toLowerCase())) {
-  //     alert("모바일로 접속 하였습니다.\n PC로 접속해주세요!");
-  //     window.location.href = "{% url 'mobile' %}";
-  //     location.replace("{% url 'mobile' %}");
-  //   }
-  // }
+  window.onload = function () {
+    isMobile();
+  };
 
   // 카드뒤집기 js
-  $(".item_container-flip").mouseover(function(event){
-    let target = $(this).closest(".item_container-flip");
-      target.css({'transform':'rotateY(180deg)'});
-});
+  // $(".item_container-flip").mouseover(function (event) {
+  //   let target = $(this).closest(".item_container-flip");
+  //   target.css({ transform: "rotateY(180deg)" });
+  // });
 
-$(".item_container-flip").mouseleave(function(event){
+  $(".info__front-name").click(function (event) {
     let target = $(this).closest(".item_container-flip");
-    target.css({'transform':'rotateY(0deg)'});
-});
+    target.css({ transform: "rotateY(180deg)" });
+  });
+
+  $(".info__filp-cancel").click(function (event) {
+    let target = $(this).closest(".item_container-flip");
+    target.css({ transform: "rotateY(0deg)" });
+  });
+
+  // 판매자 정보 안내 모달
+  $(".info__front-name").mouseover(function () {
+    $(this).siblings(".info__seller-modal").fadeIn();
+  });
+  $(".info__front-name").mouseleave(function () {
+    $(this).siblings(".info__seller-modal").fadeOut();
+  });
+
+
 </script>
-
-
 
 {% endblock %}

@@ -11,8 +11,15 @@
   >
     {% csrf_token %}
     <input class="message-form__target" type="text" name="target" />
-    <input class="message-form__input" type="text" name="content" />
-    <button class="message-form__submit" type="submit">전송</button>
+    <input
+      class="message-form__input"
+      type="text"
+      name="content"
+      id="#room-name-input"
+    />
+    <button class="message-form__submit" type="submit" id="room-name-submit">
+      전송
+    </button>
   </form>
   <div class="message-box">
     {% for message in messages %}
@@ -32,4 +39,5 @@
   </div>
   <div class="design-line--bottom"></div>
 </div>
+
 {% endblock %}

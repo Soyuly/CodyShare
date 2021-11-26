@@ -1,6 +1,9 @@
 from django.contrib import admin
 from django.urls import path
 from account import views
+from django.conf import settings
+from django.views.static import serve
+from django.conf.urls import url
 
 urlpatterns = [
     path('login/', views.login, name='login'),
@@ -15,8 +18,5 @@ urlpatterns = [
     path('edit_account/<str:user_id>', views.edit_account, name='edit_account'),
     path('kakao/login', views.kakao_login, name='kakao_login'),
     path('kakao/callback/', views.kakao_callback, name='kakao_callback'),
-
-
-   
-  
 ]
+

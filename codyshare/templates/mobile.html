@@ -12,7 +12,17 @@
       max-width: 100%;
     }
   </style>
-  <body>
+  <script>
+    window.history.forward();
+    function noBack() {
+      window.history.forward();
+    }
+  </script>
+  <body
+    onload="noBack();"
+    onpageshow="if(event.persisted) noBack();"
+    onunload=""
+  >
     <img src="{% static 'img/소개페이지.png' %}" />
   </body>
 </html>

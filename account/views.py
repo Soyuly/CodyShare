@@ -5,6 +5,8 @@ from django.contrib import auth
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
+import requests
+
 
 # Create your views here.
 
@@ -40,7 +42,7 @@ def signup_backend(request):
 
     if request.method  == 'POST':
         account = Account()
-        account.photo = request.FILES['photo']
+        account.photo = request.FILES.get('photo', False)
         account.nickname = request.POST['nickname']
         account.birth = request.POST['birth']
         account.gender = request.POST['gender']
@@ -108,7 +110,7 @@ class KakaoException:
 
 def kakao_login(request):
     client_id = 'eebc5ddba4a23626be8715744818895c'
-    REDIRECT_URI = "http://127.0.0.1:8000/kakao/callback"
+    REDIRECT_URI = "http://118.39.210.210:8443/kakao/callback"
     return redirect(
         f"https://kauth.kakao.com/oauth/authorize?client_id={client_id}&redirect_uri={REDIRECT_URI}&response_type=code"
     )
@@ -116,7 +118,7 @@ def kakao_callback(request):
     	#카카오 회원가입 과정
     code = request.GET.get("code")
     client_id = "eebc5ddba4a23626be8715744818895c"
-    REDIRECT_URI = "http://127.0.0.1:8000/kakao/callback"
+    REDIRECT_URI = "http://118.39.210.210:8443/kakao/callback"
     #(2)
     token_request = requests.get(
         f"https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id={client_id}&redirect_uri={REDIRECT_URI}&code={code}"
@@ -177,5 +179,4 @@ def kakao_callback(request):
     else:
         error = 1
         return render(request, 'login.html', {'error': error})
-    
     
