@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 import requests
 
+
 # Create your views here.
 
 

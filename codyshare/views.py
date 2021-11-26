@@ -5,7 +5,6 @@ from django.contrib.auth.decorators import login_required
 from account.models import Account
 from .models import Post
 from django.contrib import auth
-import json, requests, os
 from django.http import JsonResponse
 from .models import Post, Like,Reservation, Message
 from django.utils.safestring import mark_safe
@@ -87,6 +86,7 @@ def create(request):
     return render(request,'create.html')
 
 def detail(request, post_id):
+    user=request.user
     post = get_object_or_404(Post, pk=post_id)
     like = request.GET.get("like")
     
@@ -108,7 +108,7 @@ def detail(request, post_id):
             like.user_id = user_id
             like.post = post
             like.save()
-        return redirect('/detail/' + str(post_id))
+        return redirect('/detail/' + str(post_id),{'user':user})
 
     # 대여중 구현
     rent_posts = Reservation.objects.filter(post_id = post).filter(state = 1) #해당 글에 대한 예약 모두 가져옴
@@ -167,7 +167,7 @@ def rent(request):
         reservation.rent_end = request.POST['end']
         reservation.state=0
         reservation.save()   
-    return render(request,'main.html')
+    redirect('/main/'+str(user.id))
 
 def message(request, rid, post_id):
     print("message")

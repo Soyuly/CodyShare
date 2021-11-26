@@ -43,7 +43,7 @@
     {% endfor %}
 {% endif %}
 </div>
-    <form action="{% url 'rent' %}" method="post">
+    <form action="{% url 'rent' user.id %}" method="post">
       {% csrf_token %}
       <img src="{{post.img.url}}" class="detail"></img>
       <form action="{% url 'rent' %}" method="post" class="rentForm">

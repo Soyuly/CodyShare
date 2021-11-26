@@ -29,7 +29,7 @@ urlpatterns = [
     path('apply/<str:apply_mem>', views.apply, name='apply'),
     path('return_item/<str:return_item>', views.return_item, name='return_item'),
     path('mypage', views.mypage, name="mypage"),
-    path('', views.rent, name="rent"),
+    path('rent/<str:user_id>', views.rent, name="rent"),
     
     path('', include('account.urls')), 
     path('create/',views.create, name="create"),

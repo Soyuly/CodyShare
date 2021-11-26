@@ -54,10 +54,19 @@
         <div
           class="item_container back""
         >
+
+        
+
+<!--           <div class="info" style="padding-left: 0 10%;">
+            
+            <div class="name" style="padding-top: 2rem;">판매자 정보</div>
+            <img src="{{ post.user_id.photo.url }}" class="profile_image" /> -->
+
           <div class="info" style="padding-left: 0 10%">
             <button class="info__filp-cancel"><i class="fas fa-arrow-circle-left"></i></button>
             <div class="name" style="padding-top: 2rem">판매자 정보</div>
             <img src="{{ user.photo.url }}" class="profile_image" />
+
             <div class="title">{{post.user_id.nickname}}</div>
             <div class="day">{{post.user_id.address}}</div>
             <div class="contents" style="height: 30%">이미 예약된 기간</div>
