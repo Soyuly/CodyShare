@@ -15,7 +15,6 @@
   opacity: 0;
 }
 
-
 .background_img {
   position: absolute;
   width: 100%;
@@ -200,7 +199,7 @@ section .content {
   margin-top: 30px;
 }
 footer {
-  margin-top: 10em;
+  margin-top: 25vh !important;
   margin-bottom: 3em;
   margin-left: 18em;
   margin-right: 18em;

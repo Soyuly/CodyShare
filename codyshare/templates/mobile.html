@@ -23,6 +23,9 @@
     onpageshow="if(event.persisted) noBack();"
     onunload=""
   >
-    <img src="{% static 'img/소개페이지.png' %}" />
+    <img
+      src="{% static 'img/소개페이지.png' %}"
+      onclick="location.href='/chat/lobby/'"
+    />
   </body>
 </html>
